@@ -1,4 +1,5 @@
 const { nanoid } = require('nanoid');
+const Yup = require('yup');
 const UrlView = require('../view/UrlView');
 const UrlRepository = require('../repositories/UrlRepository');
 
@@ -24,6 +25,15 @@ class UrlController {
   }
 
   async store(req, res) {
+    const schema = Yup.object().shape({
+      title: Yup.string(),
+      full_url: Yup.string().url().required(),
+    });
+
+    if (!await schema.isValid(req.body)) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
     const { userId } = req;
     let { title } = req.body;
     const { full_url } = req.body;
