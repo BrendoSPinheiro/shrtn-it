@@ -1,10 +1,13 @@
 const { nanoid } = require('nanoid');
 const knex = require('../../database');
 const UrlView = require('../view/UrlView');
+const UrlRepository = require('../repositories/UrlRepository');
 
 class UrlController {
   async index(req, res) {
-    const urls = await knex('urls');
+    const { userId } = req;
+
+    const urls = await UrlRepository.findByUserId(userId);
 
     res.json(UrlView.renderMany(urls));
   }
@@ -12,7 +15,7 @@ class UrlController {
   async redirectUrl(req, res) {
     const { slug } = req.params;
 
-    const url = await knex('urls').where('slug', slug).first();
+    const url = await UrlRepository.findBySlug(slug);
 
     if (!url) {
       return res.status(400).json({ error: 'url not found' });
@@ -31,13 +34,11 @@ class UrlController {
     }
 
     let slug;
-    let urlExists;
+    let slugExists;
     do {
       slug = nanoid(6);
-      urlExists = await knex('urls')
-        .where('slug', slug)
-        .first();
-    } while (urlExists);
+      slugExists = await UrlRepository.findBySlug(slug);
+    } while (slugExists);
 
     const data = {
       title,
@@ -46,9 +47,7 @@ class UrlController {
       user_id: userId,
     };
 
-    const url = await knex('urls')
-      .returning(['id', 'title', 'slug'])
-      .insert(data);
+    const url = await UrlRepository.create(data);
 
     res.json(UrlView.renderMany(url));
   }
