@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const UserView = require('../view/UserView');
 const knex = require('../../database');
-require('dotenv/config');
 
 class SessionController {
   async authenticate(req, res) {

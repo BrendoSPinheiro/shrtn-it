@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const Yup = require('yup');
 
-const knex = require('../../database');
+const UserRepository = require('../repositories/UserRepository');
 
 class UserController {
   async store(req, res) {
@@ -17,7 +17,7 @@ class UserController {
 
     const { name, email, password } = req.body;
 
-    const userExists = await knex('users').where('email', email).first();
+    const userExists = await UserRepository.findByEmail(email);
 
     if (userExists) {
       return res.sendStatus(409);
@@ -29,9 +29,7 @@ class UserController {
       password: await bcrypt.hash(password, 8),
     };
 
-    const user = await knex('users')
-      .returning(['id', 'name', 'email'])
-      .insert(data);
+    const user = await UserRepository.create(data);
 
     res.json(user);
   }
