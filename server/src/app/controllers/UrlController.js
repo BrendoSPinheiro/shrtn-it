@@ -22,6 +22,7 @@ class UrlController {
   }
 
   async store(req, res) {
+    const { userId } = req;
     let { title } = req.body;
     const { full_url } = req.body;
 
@@ -31,7 +32,6 @@ class UrlController {
 
     let slug;
     let urlExists;
-
     do {
       slug = nanoid(6);
       urlExists = await knex('urls')
@@ -43,6 +43,7 @@ class UrlController {
       title,
       full_url,
       slug,
+      user_id: userId,
     };
 
     const url = await knex('urls')
