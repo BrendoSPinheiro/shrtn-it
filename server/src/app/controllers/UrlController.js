@@ -1,5 +1,4 @@
 const { nanoid } = require('nanoid');
-const knex = require('../../database');
 const UrlView = require('../view/UrlView');
 const UrlRepository = require('../repositories/UrlRepository');
 

@@ -1,13 +1,13 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const UserView = require('../view/UserView');
-const knex = require('../../database');
+const UserRepository = require('../repositories/UserRepository');
 
 class SessionController {
   async authenticate(req, res) {
     const { email, password } = req.body;
 
-    const user = await knex('users').where('email', email).first();
+    const user = await UserRepository.findByEmail(email);
 
     if (!user) {
       return res.sendStatus(401);
