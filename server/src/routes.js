@@ -7,9 +7,11 @@ const authMiddleware = require('./app/middlewares/authMiddleware');
 
 const router = Router();
 
+router.get('/urls', authMiddleware, UrlController.index);
 router.get('/:slug', UrlController.redirectUrl);
-router.get('/urls', UrlController.index);
+
 router.post('/urls', authMiddleware, UrlController.store);
+router.delete('/urls/:id', UrlController.delete);
 
 router.post('/users', UserController.store);
 

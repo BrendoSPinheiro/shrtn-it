@@ -60,6 +60,22 @@ class UrlController {
 
     res.json(UrlView.renderMany(url));
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    console.log(id);
+
+    const urlExists = await UrlRepository.findById(id);
+
+    if (!urlExists) {
+      return res.status(400).json({ error: 'Url does not exists' });
+    }
+
+    await UrlRepository.delete(id);
+
+    res.sendStatus(200);
+  }
 }
 
 module.exports = new UrlController();

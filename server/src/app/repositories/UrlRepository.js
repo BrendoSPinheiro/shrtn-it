@@ -1,6 +1,14 @@
 const knex = require('../../database');
 
 class UrlRepository {
+  async findById(id) {
+    const url = await knex('urls')
+      .where('id', id)
+      .first();
+
+    return url;
+  }
+
   async findByUserId(id) {
     const urls = await knex('urls')
       .where('user_id', id);
@@ -22,6 +30,10 @@ class UrlRepository {
       .insert(urlData);
 
     return url;
+  }
+
+  async delete(id) {
+    await knex('urls').where('id', id).del();
   }
 }
 
