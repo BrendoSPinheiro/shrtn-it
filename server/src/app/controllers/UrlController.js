@@ -21,6 +21,8 @@ class UrlController {
       return res.status(400).json({ error: 'url not found' });
     }
 
+    await UrlRepository.updateClick(url.id, (url.count_click + 1));
+
     res.redirect(url.full_url);
   }
 

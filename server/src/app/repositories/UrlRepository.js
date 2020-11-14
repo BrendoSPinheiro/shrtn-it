@@ -32,6 +32,12 @@ class UrlRepository {
     return url;
   }
 
+  async updateClick(id, count_click) {
+    await knex('urls')
+      .where('id', id)
+      .update({ count_click });
+  }
+
   async delete(id) {
     await knex('urls').where('id', id).del();
   }
