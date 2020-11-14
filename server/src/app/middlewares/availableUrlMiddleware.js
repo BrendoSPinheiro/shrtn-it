@@ -7,7 +7,7 @@ module.exports = function availableUrlMiddleware(req, res, next) {
     if (response.status >= 100 && response.status < 300) {
       return next();
     } if (response.status < 600) {
-      return res.sendStatus(412);
+      return res.json({ ERROR: 'ERRO' });
     }
   });
 };
