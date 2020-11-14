@@ -1,5 +1,4 @@
 const { nanoid } = require('nanoid');
-const Yup = require('yup');
 const UrlView = require('../view/UrlView');
 const UrlRepository = require('../repositories/UrlRepository');
 
@@ -21,21 +20,12 @@ class UrlController {
       return res.status(400).json({ error: 'url not found' });
     }
 
-    await UrlRepository.updateClick(url.id, (url.count_click + 1));
+    await UrlRepository.updateClick(url.id, (url.count_click++));
 
     res.redirect(url.full_url);
   }
 
   async store(req, res) {
-    const schema = Yup.object().shape({
-      title: Yup.string(),
-      full_url: Yup.string().url().required(),
-    });
-
-    if (!await schema.isValid(req.body)) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
-
     const { userId } = req;
     let { title } = req.body;
     const { full_url } = req.body;

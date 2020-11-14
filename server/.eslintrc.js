@@ -18,5 +18,6 @@ module.exports = {
     camelcase: 'off',
     'no-console': 'off',
     'no-await-in-loop': 'off',
+    'no-plusplus': 'off',
   },
 };
