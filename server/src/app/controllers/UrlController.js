@@ -1,6 +1,6 @@
-const { nanoid } = require('nanoid');
 const UrlView = require('../view/UrlView');
 const UrlRepository = require('../repositories/UrlRepository');
+const SlugGenerator = require('../Utils/SlugGenerator');
 
 class UrlController {
   async index(req, res) {
@@ -27,24 +27,13 @@ class UrlController {
 
   async store(req, res) {
     const { userId } = req;
-    let { title } = req.body;
+    const { title } = req.body;
     const { full_url } = req.body;
-
-    if (!title) {
-      title = full_url;
-    }
-
-    let slug;
-    let slugExists;
-    do {
-      slug = nanoid(6);
-      slugExists = await UrlRepository.findBySlug(slug);
-    } while (slugExists);
 
     const data = {
       title,
       full_url,
-      slug,
+      slug: await SlugGenerator(),
       user_id: userId,
     };
 

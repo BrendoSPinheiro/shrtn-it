@@ -10,5 +10,9 @@ module.exports = async function verifyUrlMiddleware(req, res, next) {
     return res.status(400).json({ error: 'Validation fails' });
   }
 
+  if (!req.body.title) {
+    req.body.title = req.body.full_url;
+  }
+
   return next();
 };
