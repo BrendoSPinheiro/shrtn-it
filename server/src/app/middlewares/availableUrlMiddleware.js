@@ -9,6 +9,6 @@ module.exports = function availableUrlMiddleware(req, res, next) {
   })
     .then(() => next())
     .catch(() => {
-      res.status(400).json({ error: 'Insert valid URL' });
+      res.status(400).json({ error: 'URL is not available' });
     });
 };

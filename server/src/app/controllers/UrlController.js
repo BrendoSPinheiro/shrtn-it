@@ -45,8 +45,6 @@ class UrlController {
   async delete(req, res) {
     const { id } = req.params;
 
-    console.log(id);
-
     const urlExists = await UrlRepository.findById(id);
 
     if (!urlExists) {
@@ -55,7 +53,7 @@ class UrlController {
 
     await UrlRepository.delete(id);
 
-    res.sendStatus(200);
+    res.status(200).json({ OK: true });
   }
 }
 

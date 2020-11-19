@@ -18,7 +18,7 @@ router.post('/urls',
   verifyUrlMiddleware,
   availableUrlMiddleware,
   UrlController.store);
-router.delete('/urls/:id', UrlController.delete);
+router.delete('/urls/:id', authMiddleware, UrlController.delete);
 
 router.post('/users', verifyUserMiddleware, UserController.store);
 
