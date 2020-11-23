@@ -19,5 +19,6 @@ module.exports = {
     'no-console': 'off',
     'no-await-in-loop': 'off',
     'no-plusplus': 'off',
+    'no-param-reassign': 'off',
   },
 };

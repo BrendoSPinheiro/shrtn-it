@@ -1,6 +1,6 @@
 const UrlDto = require('../dto/UrlDto');
 const UrlRepository = require('../repositories/UrlRepository');
-const SlugGenerator = require('../Utils/SlugGenerator');
+const CreateUrlService = require('../services/url/CreateUrlService');
 
 class UrlController {
   async index(req, res) {
@@ -26,20 +26,19 @@ class UrlController {
   }
 
   async store(req, res) {
-    const { userId } = req;
-    const { title } = req.body;
-    const { full_url } = req.body;
+    try {
+      const { userId } = req;
+      const { title } = req.body;
+      const { full_url } = req.body;
 
-    const data = {
-      title,
-      full_url,
-      slug: await SlugGenerator(),
-      user_id: userId,
-    };
+      const createUrl = new CreateUrlService();
 
-    const url = await UrlRepository.create(data);
+      const url = await createUrl.execute({ title, full_url, userId });
 
-    res.json(UrlDto.renderMany(url));
+      return res.json(UrlDto.renderMany(url));
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   }
 
   async delete(req, res) {
