@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const UserView = require('../view/UserView');
+const UserDto = require('../dto/UserDto');
 const UserRepository = require('../repositories/UserRepository');
 
 class SessionController {
@@ -24,7 +24,7 @@ class SessionController {
     }, process.env.JWTSECRET, { expiresIn: '1d' });
 
     return res.json({
-      user: UserView.render(user),
+      user: UserDto.render(user),
       token,
     });
   }

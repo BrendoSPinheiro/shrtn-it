@@ -1,4 +1,4 @@
-const UrlView = require('../view/UrlView');
+const UrlDto = require('../dto/UrlDto');
 const UrlRepository = require('../repositories/UrlRepository');
 const SlugGenerator = require('../Utils/SlugGenerator');
 
@@ -8,7 +8,7 @@ class UrlController {
 
     const urls = await UrlRepository.findByUserId(userId);
 
-    res.json(UrlView.renderMany(urls));
+    res.json(UrlDto.renderMany(urls));
   }
 
   async redirectUrl(req, res) {
@@ -39,7 +39,7 @@ class UrlController {
 
     const url = await UrlRepository.create(data);
 
-    res.json(UrlView.renderMany(url));
+    res.json(UrlDto.renderMany(url));
   }
 
   async delete(req, res) {
