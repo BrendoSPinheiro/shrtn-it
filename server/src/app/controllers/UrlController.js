@@ -1,6 +1,7 @@
 const UrlDto = require('../dto/UrlDto');
 const UrlRepository = require('../repositories/UrlRepository');
 
+const RedirectUrlService = require('../services/url/RedirectUrlService');
 const CreateUrlService = require('../services/url/CreateUrlService');
 const DeleteUrlService = require('../services/url/DeleteUrlService');
 
@@ -14,17 +15,17 @@ class UrlController {
   }
 
   async redirectUrl(req, res) {
-    const { slug } = req.params;
+    try {
+      const { slug } = req.params;
 
-    const url = await UrlRepository.findBySlug(slug);
+      const redirectUrl = new RedirectUrlService();
 
-    if (!url) {
-      return res.status(400).json({ error: 'url not found' });
+      const url = await redirectUrl.execute(slug);
+
+      res.redirect(url.full_url);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
-
-    await UrlRepository.updateClick(url.id, (++url.count_click));
-
-    res.redirect(url.full_url);
   }
 
   async store(req, res) {
