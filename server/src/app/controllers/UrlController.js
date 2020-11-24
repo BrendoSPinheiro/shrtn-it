@@ -1,6 +1,8 @@
 const UrlDto = require('../dto/UrlDto');
 const UrlRepository = require('../repositories/UrlRepository');
+
 const CreateUrlService = require('../services/url/CreateUrlService');
+const DeleteUrlService = require('../services/url/DeleteUrlService');
 
 class UrlController {
   async index(req, res) {
@@ -42,17 +44,17 @@ class UrlController {
   }
 
   async delete(req, res) {
-    const { id } = req.params;
+    try {
+      const { id } = req.params;
 
-    const urlExists = await UrlRepository.findById(id);
+      const deleteUrl = new DeleteUrlService();
 
-    if (!urlExists) {
-      return res.status(400).json({ error: 'Url does not exists' });
+      await deleteUrl.execute(id);
+
+      res.status(200).json({ OK: true });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
-
-    await UrlRepository.delete(id);
-
-    res.status(200).json({ OK: true });
   }
 }
 
