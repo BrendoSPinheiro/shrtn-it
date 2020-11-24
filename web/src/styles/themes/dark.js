@@ -11,10 +11,9 @@ export default {
     normal: 400,
     bold: 600,
     size: {
-      xsmall: '1.6rem',
-      small: '1.8rem',
-      medium: '3rem',
-      large: '4rem',
+      small: '1.6rem',
+      medium: '1.8rem',
+      large: '3rem',
     },
   },
 

@@ -6,7 +6,7 @@ function App() {
     <>
       <ThemeProvider theme={Dark}>
         <GlobalStyles />
-        <h1>Hello World</h1>
+        <h1>Login</h1>
       </ThemeProvider>
     </>
   );
