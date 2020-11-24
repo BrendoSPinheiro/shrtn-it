@@ -1,26 +1,18 @@
-const bcrypt = require('bcryptjs');
-
-const UserRepository = require('../repositories/UserRepository');
+const CreateUserService = require('../services/user/CreateUserService');
 
 class UserController {
   async store(req, res) {
-    const { name, email, password } = req.body;
+    try {
+      const { name, email, password } = req.body;
 
-    const userExists = await UserRepository.findByEmail(email);
+      const createUser = new CreateUserService();
 
-    if (userExists) {
-      return res.sendStatus(409);
+      const user = await createUser.execute({ name, email, password });
+
+      res.json(user);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
-
-    const data = {
-      name,
-      email,
-      password: await bcrypt.hash(password, 8),
-    };
-
-    const user = await UserRepository.create(data);
-
-    res.json(user);
   }
 }
 
