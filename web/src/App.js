@@ -5,6 +5,7 @@ import GlobalStyles from './styles/global';
 import { FiSearch as SearchIcon } from 'react-icons/fi';
 
 import Button from './components/Button';
+import Title from './components/Title';
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Button icon={<SearchIcon />} size="medium">
           Click-me
         </Button>
+        <Title color="purple" weight>
+          Title
+        </Title>
+        <Title color="purple">Title</Title>
       </ThemeProvider>
     </ThemeConsumer>
   );

@@ -30,7 +30,7 @@ export default {
   colors: {
     text: {
       primary: '#7161EF',
-      secondary: '#FFFF',
+      secondary: '#FAFAFA',
       gray: '#67628C',
     },
     button: {
