@@ -42,6 +42,9 @@ export default {
       mainBg: '#312E46',
       secondBg: '#423F5B',
     },
+    stroke: {
+      primary: '#67628C',
+    },
 
     icons: {
       red: '#FF5B5B',

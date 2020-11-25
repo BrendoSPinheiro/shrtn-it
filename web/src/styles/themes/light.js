@@ -46,6 +46,10 @@ export default {
       secondBg: '#FAFAFA',
     },
 
+    stroke: {
+      primary: '#636363',
+    },
+
     icons: {
       red: '#FF5B5B',
       blue: '#61A1E1',
