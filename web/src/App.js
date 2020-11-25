@@ -1,14 +1,18 @@
 import { ThemeProvider } from 'styled-components';
+import { ThemeProvider as ThemeConsumer } from './context/theme';
 import Dark from './styles/themes/dark';
 import GlobalStyles from './styles/global';
+
+import Header from './components/Header';
+
 function App() {
   return (
-    <>
+    <ThemeConsumer>
       <ThemeProvider theme={Dark}>
         <GlobalStyles />
-        <h1>Login</h1>
+        <Header />
       </ThemeProvider>
-    </>
+    </ThemeConsumer>
   );
 }
 

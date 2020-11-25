@@ -4,10 +4,12 @@ import Dark from '../styles/themes/dark';
 
 export const ThemeContext = createContext();
 
-const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(Dark);
 
-  return <ThemeContext value={{ theme, setTheme }}>{children}</ThemeContext>;
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
-
-export default ThemeProvider;
