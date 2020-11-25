@@ -1,7 +1,3 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const Wrapper = styled.label`
-  ${({ theme }) => css`
-    background: ${theme.colors.background.mainBg};
-  `}
-`;
+export const Wrapper = styled.label``;
