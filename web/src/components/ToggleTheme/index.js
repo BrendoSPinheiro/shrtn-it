@@ -13,14 +13,12 @@ import Light from '../../styles/themes/light';
 const ToggleTheme = () => {
   const [checked, setChecked] = useState(false);
 
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const handleToggleTheme = () => {
     setChecked(!checked);
 
-    checked ? setTheme(Dark) : setTheme(Light);
-
-    console.log(theme);
+    checked ? setTheme(Light) : setTheme(Dark);
   };
   return (
     <S.Wrapper>
