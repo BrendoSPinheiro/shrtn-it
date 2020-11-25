@@ -2,15 +2,18 @@ import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as ThemeConsumer } from './context/theme';
 import Dark from './styles/themes/dark';
 import GlobalStyles from './styles/global';
+import { FiSearch as SearchIcon } from 'react-icons/fi';
 
-import Header from './components/Header';
+import Button from './components/Button';
 
 function App() {
   return (
     <ThemeConsumer>
       <ThemeProvider theme={Dark}>
         <GlobalStyles />
-        <Header />
+        <Button icon={<SearchIcon />} size="medium">
+          Click-me
+        </Button>
       </ThemeProvider>
     </ThemeConsumer>
   );

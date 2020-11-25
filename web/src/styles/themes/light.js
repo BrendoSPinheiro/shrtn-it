@@ -1,7 +1,8 @@
 export default {
   name: 'light',
   border: {
-    radius: '3rem',
+    bgRadius: '3rem',
+    buttonRadius: '1rem',
   },
 
   font: {
@@ -32,6 +33,12 @@ export default {
       primary: '#7161EF',
       secondary: '#3E3E3E',
       gray: '#5C587B',
+    },
+
+    button: {
+      content: '#FFFF',
+      mainBg: '#7161EF',
+      hover: '#7166CC',
     },
 
     background: {
