@@ -37,6 +37,11 @@ export const Wrapper = styled.button`
     border-radius: ${theme.border.buttonRadius};
     border: 0;
     cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: ${theme.colors.button.hover};
+    }
 
     ${!!size && wrapperModifiers[size](theme)}
     ${!!fullWidth && wrapperModifiers.fullWidth()}
