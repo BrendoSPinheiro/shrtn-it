@@ -15,9 +15,6 @@ function App() {
         <Button icon={<SearchIcon />} size="medium">
           Click-me
         </Button>
-        <Title color="purple" weight>
-          Title
-        </Title>
         <Title color="purple">Title</Title>
       </ThemeProvider>
     </ThemeConsumer>

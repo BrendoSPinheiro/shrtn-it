@@ -2,12 +2,14 @@ import styled, { css } from 'styled-components';
 
 const wrapperModifiers = {
   small: (theme) => css`
-    width: 3.4rem;
+    width: 100%;
+    max-width: 3.4rem;
     height: 3.4rem;
     font-size: ${theme.font.size.small};
   `,
   medium: (theme) => css`
-    width: 28.9rem;
+    width: 100%;
+    max-width: 28.9rem;
     height: 6.2rem;
     font-size: ${theme.font.size.medium};
     font-weight: 600;
