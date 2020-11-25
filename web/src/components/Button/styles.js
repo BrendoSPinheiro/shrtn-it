@@ -15,7 +15,7 @@ const wrapperModifiers = {
     font-weight: 600;
   `,
   fullWidth: () => css`
-    width: 100%;
+    max-width: 100%;
   `,
 
   withIcon: (theme) => css`

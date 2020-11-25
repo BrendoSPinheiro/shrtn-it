@@ -12,7 +12,7 @@ function App() {
     <ThemeConsumer>
       <ThemeProvider theme={Dark}>
         <GlobalStyles />
-        <Button icon={<SearchIcon />} size="medium">
+        <Button icon={<SearchIcon />} fullWidth size="medium">
           Click-me
         </Button>
         <Title color="purple">Title</Title>
