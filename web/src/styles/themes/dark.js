@@ -1,7 +1,8 @@
 export default {
   name: 'dark',
   border: {
-    radius: '3rem',
+    bgRadius: '3rem',
+    buttonRadius: '1rem',
   },
 
   font: {
@@ -29,13 +30,20 @@ export default {
   colors: {
     text: {
       primary: '#7161EF',
-      secondary: '#FFFF',
+      secondary: '#FAFAFA',
       gray: '#67628C',
     },
-
+    button: {
+      content: '#FFFF',
+      mainBg: '#7161EF',
+      hover: '#7166CC',
+    },
     background: {
       mainBg: '#312E46',
       secondBg: '#423F5B',
+    },
+    stroke: {
+      primary: '#1F1B3D',
     },
 
     icons: {

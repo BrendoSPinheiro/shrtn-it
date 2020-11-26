@@ -1,7 +1,8 @@
 export default {
   name: 'light',
   border: {
-    radius: '3rem',
+    bgRadius: '3rem',
+    buttonRadius: '1rem',
   },
 
   font: {
@@ -11,10 +12,9 @@ export default {
     normal: 400,
     bold: 600,
     size: {
-      xsmall: '1.6rem',
-      small: '1.8rem',
-      medium: '3rem',
-      large: '4rem',
+      small: '1.6rem',
+      medium: '1.8rem',
+      large: '3rem',
     },
   },
 
@@ -34,9 +34,19 @@ export default {
       gray: '#5C587B',
     },
 
+    button: {
+      content: '#FFFF',
+      mainBg: '#7161EF',
+      hover: '#7166CC',
+    },
+
     background: {
       mainBg: '#7161EF',
       secondBg: '#FAFAFA',
+    },
+
+    stroke: {
+      primary: '#636363',
     },
 
     icons: {
