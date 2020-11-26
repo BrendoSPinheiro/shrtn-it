@@ -7,6 +7,7 @@ import Title from '../../components/Title';
 import InputForm from '../../components/InputForm';
 import ToggleTheme from '../../components/ToggleTheme';
 import ModalCreateUrl from '../../components/ModalCreateUrl';
+import Jumbotron from '../../components/Jumbotron';
 
 import useTheme from '../../utils/useTheme';
 
@@ -31,6 +32,7 @@ const Layout = () => {
         hideModal={hideModal}
         onClick={() => setHideModal(!hideModal)}
       />
+      <Jumbotron>Hello Jumbotron</Jumbotron>
     </ThemeProvider>
   );
 };
