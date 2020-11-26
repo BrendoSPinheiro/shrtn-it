@@ -32,6 +32,9 @@ export const Modal = styled.div`
 
     border-radius: ${theme.border.bgRadius};
     padding: ${theme.spacing.xlarge} 5rem;
+
+    box-shadow: 10px 129px 62px rgba(0, 0, 0, 0.027476),
+      10px 44.6328px 20.5416px rgba(0, 0, 0, 0.0403763);
   `}
 `;
 
