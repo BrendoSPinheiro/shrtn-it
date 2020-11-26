@@ -43,7 +43,7 @@ export default {
       secondBg: '#423F5B',
     },
     stroke: {
-      primary: '#67628C',
+      primary: '#1F1B3D',
     },
 
     icons: {

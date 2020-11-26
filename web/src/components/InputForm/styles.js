@@ -10,13 +10,17 @@ export const InputLabel = styled.div`
     svg {
       font-size: 2.4rem;
       margin: ${theme.spacing.medium} ${theme.spacing.xsmall};
+      color: ${theme.colors.icons.select};
     }
     margin-bottom: ${theme.spacing.xlarge};
   `}
 `;
+
 export const Name = styled.label`
   ${({ theme }) => css`
     font-size: ${theme.font.size.medium};
+    color: ${theme.colors.text.secondary};
+    font-family: 'Roboto';
   `}
 `;
 
@@ -25,6 +29,8 @@ export const Input = styled.input`
     border: 0;
     outline: 0;
     font-size: ${theme.font.size.medium};
+    color: ${theme.colors.text.secondary};
+    background: none;
     width: 95%;
   `}
 `;

@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-
 import GlobalStyles from '../../styles/global';
 import { FiUnlock as SearchIcon } from 'react-icons/fi';
 import Button from '../../components/Button';
 import Title from '../../components/Title';
 import InputForm from '../../components/InputForm';
 import ToggleTheme from '../../components/ToggleTheme';
+import ModalCreateUrl from '../../components/ModalCreateUrl';
+
 import useTheme from '../../utils/useTheme';
 
 const Layout = () => {
   const { theme } = useTheme();
+
+  const [hideModal, setHideModal] = useState(true);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -21,6 +25,12 @@ const Layout = () => {
         Email
       </InputForm>
       <ToggleTheme />
+      <br />
+      <button onClick={() => setHideModal(!hideModal)}>MODAL</button>
+      <ModalCreateUrl
+        hideModal={hideModal}
+        onClick={() => setHideModal(!hideModal)}
+      />
     </ThemeProvider>
   );
 };
