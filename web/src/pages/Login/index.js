@@ -16,8 +16,18 @@ const Login = () => {
           <Title color="purple" customClass="title-form-login">
             Login
           </Title>
-          {content.map(({ id, children, type, icon }) => (
-            <InputForm key={id} icon={icon} type={type}>
+          {content.map(({ id, children, type, icon, alternativeText }) => (
+            <InputForm
+              key={id}
+              icon={icon}
+              type={type}
+              alternativeText={
+                !!alternativeText && {
+                  url: alternativeText.url,
+                  name: alternativeText.name,
+                }
+              }
+            >
               {children}
             </InputForm>
           ))}

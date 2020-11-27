@@ -5,11 +5,17 @@ export default [
     children: 'Email',
     type: 'mail',
     icon: <MainIcon />,
+    alternativeText: null,
   },
   {
     id: 2,
     children: 'Senha',
     type: 'text',
     icon: <LockIcon />,
+
+    alternativeText: {
+      name: 'Esqueci a senha',
+      url: '#',
+    },
   },
 ];
