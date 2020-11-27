@@ -18,7 +18,7 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div`
   ${({ theme, color, weight }) => css`
-    font-size: ${theme.font.size.medium};
+    font-size: max(${theme.font.size.medium}, 90%);
 
     & h1 {
       font-weight: ${theme.font.normal};
