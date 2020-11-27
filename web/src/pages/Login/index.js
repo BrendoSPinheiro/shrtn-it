@@ -1,16 +1,17 @@
-import { useState } from 'react';
 import * as S from './styles';
 
-import ModalCreateUrl from '../../components/ModalCreateUrl';
-import ToggleTheme from '../../components/ToggleTheme';
+import demonstration from '../../assets/images/demonstration.svg';
+
+import Title from '../../components/Title';
 
 const Login = () => {
-  const [hide, setHide] = useState(false);
   return (
     <S.Wrapper>
-      <ModalCreateUrl hideModal={hide} onClick={() => setHide(!hide)} />
-      <button onClick={() => setHide(!hide)}>CLIQUE MEEEE</button>
-      <ToggleTheme />
+      <S.SectionForm>wdwd</S.SectionForm>
+      <S.SectionDemonstration>
+        <Title weight>Seu Link curto e seguro</Title>
+        <img src={demonstration} alt="" />{' '}
+      </S.SectionDemonstration>
     </S.Wrapper>
   );
 };
