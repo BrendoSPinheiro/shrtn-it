@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import InputForm from '../InputForm';
-import Button from '../Button';
+import { useState } from 'react';
+import Select from 'react-select';
+import { DateRangePicker } from 'react-dates';
+
 import {
   FiX as XIcon,
   FiChevronRight as ChevronRightIcon,
 } from 'react-icons/fi';
+
 import * as S from './styles';
 
-import useTheme from '../../utils/useTheme';
+import InputForm from '../InputForm';
+import Button from '../Button';
 
 import { content, optionsHour } from './content';
-
-import { DateRangePicker } from 'react-dates';
-
-import Select from 'react-select';
+import useTheme from '../../utils/useTheme';
 
 const ModalCreateUrl = ({ hideModal = true, onClick }) => {
   const [translateIcon, setTranslateIcon] = useState(false);
@@ -26,7 +26,7 @@ const ModalCreateUrl = ({ hideModal = true, onClick }) => {
 
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const [hour, setHour] = useState(1);
+  const [/*hour,*/ setHour] = useState(1);
 
   const { theme } = useTheme();
 
@@ -54,9 +54,6 @@ const ModalCreateUrl = ({ hideModal = true, onClick }) => {
     }),
   };
 
-  useEffect(() => {
-    console.log(hour);
-  }, [hour]);
   return (
     <S.Wrapper hideModal={hideModal}>
       <S.Modal>
@@ -129,13 +126,8 @@ const ModalCreateUrl = ({ hideModal = true, onClick }) => {
               )}
               {showDate === 'hour' && (
                 <S.WrapperHour>
-                  <span>Termina em: </span>
-                  {/* <select name="hour" id="hour"> */}
-                  {/* {optionsHour.map(({ id, value, children }) => (
-                      <option key={id} value={value}>
-                        {children}
-                      </option>
-                    ))} */}
+                  <span>Expira em: </span>
+
                   <Select
                     name="hours"
                     options={optionsHour}
@@ -145,7 +137,6 @@ const ModalCreateUrl = ({ hideModal = true, onClick }) => {
                     defaultValue={optionsHour[0]}
                     onChange={(event) => setHour(event.value)}
                   />
-                  {/* </select> */}
                 </S.WrapperHour>
               )}
             </S.WrapperMoreOptions>
