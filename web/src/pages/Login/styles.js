@@ -23,9 +23,13 @@ export const SectionForm = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    form {
+      max-width: 29.7rem;
+    }
     form > .title-form-login {
       margin-bottom: 4rem;
     }
+
     form > button {
       margin-bottom: ${theme.spacing.small};
     }
@@ -78,6 +82,16 @@ export const Alternative = styled.span`
       &:hover {
         color: ${theme.colors.text.primary};
       }
+    }
+  `}
+`;
+export const AlternativeMobile = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    font-size: ${theme.font.size.small};
+    margin-bottom: 2rem;
+    @media (min-width: 840px) {
+      display: none;
     }
   `}
 `;
