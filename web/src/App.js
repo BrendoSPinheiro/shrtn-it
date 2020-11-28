@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from './components/Layout';
+
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
+
+import 'moment/locale/pt-br';
+import moment from 'moment';
+
+import { ThemeProvider as ThemeConsumer } from './context/theme';
 
 function App() {
+  moment.locale('pt-br');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeConsumer>
+      <Layout />
+    </ThemeConsumer>
   );
 }
 
