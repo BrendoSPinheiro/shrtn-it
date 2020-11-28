@@ -52,13 +52,14 @@ export const InputSearch = styled.input`
     height: 3.4rem;
     border-radius: ${theme.border.buttonRadius};
     border: 0.1rem solid ${theme.colors.stroke.secondary};
+    color: ${theme.colors.text.gray};
     background: ${theme.colors.background.inputBg};
 
     font-size: ${theme.font.size.small};
     padding: ${theme.spacing.xsmall};
 
     &::placeholder {
-      color: #ccc;
+      color: ${theme.colors.text.gray};
     }
   `}
 `;
