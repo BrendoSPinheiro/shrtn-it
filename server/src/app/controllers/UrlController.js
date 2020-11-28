@@ -1,6 +1,6 @@
 const UrlDto = require('../dto/UrlDto');
-const UrlRepository = require('../repositories/UrlRepository');
 
+const ListUrlService = require('../services/url/ListUrlService');
 const RedirectUrlService = require('../services/url/RedirectUrlService');
 const CreateUrlService = require('../services/url/CreateUrlService');
 const DeleteUrlService = require('../services/url/DeleteUrlService');
@@ -9,7 +9,9 @@ class UrlController {
   async index(req, res) {
     const { userId } = req;
 
-    const urls = await UrlRepository.findByUserId(userId);
+    const listUrl = new ListUrlService();
+
+    const urls = listUrl.execute(userId);
 
     res.json(UrlDto.renderMany(urls));
   }
