@@ -40,12 +40,14 @@ export const Input = styled.input`
 
 export const AlternativeText = styled.a`
   ${({ theme }) => css`
-    font-weight: ${theme.font.light};
-    color: ${theme.colors.text.gray};
-    transition: color 0.2s ease;
-    text-decoration: none;
-    &:hover {
-      color: ${theme.colors.text.primary};
+    & > a {
+      font-weight: ${theme.font.light};
+      color: ${theme.colors.text.gray};
+      transition: color 0.2s ease;
+      text-decoration: none;
+      &:hover {
+        color: ${theme.colors.text.primary};
+      }
     }
   `}
 `;
