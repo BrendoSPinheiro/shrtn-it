@@ -1,13 +1,20 @@
 import * as S from './styles';
-const InputForm = ({ children, type, icon }) => {
+
+import { Link } from 'react-router-dom';
+const InputForm = ({ children, type, icon, alternativeText = null }) => {
   return (
     <S.Wrapper>
       <S.Name>
         {children}
-        <S.InputLabel>
-          {icon} <S.Input type={type} />
-        </S.InputLabel>
+        {!!alternativeText && (
+          <S.AlternativeText>
+            <Link to={alternativeText.url}>{alternativeText.name}</Link>
+          </S.AlternativeText>
+        )}
       </S.Name>
+      <S.InputLabel>
+        {icon} <S.Input type={type} />
+      </S.InputLabel>
     </S.Wrapper>
   );
 };

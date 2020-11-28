@@ -21,6 +21,9 @@ export const Name = styled.label`
     font-size: ${theme.font.size.medium};
     color: ${theme.colors.text.secondary};
     font-family: 'Roboto';
+
+    display: flex;
+    justify-content: space-between;
   `}
 `;
 
@@ -32,5 +35,19 @@ export const Input = styled.input`
     color: ${theme.colors.text.secondary};
     background: none;
     width: 95%;
+  `}
+`;
+
+export const AlternativeText = styled.a`
+  ${({ theme }) => css`
+    & > a {
+      font-weight: ${theme.font.light};
+      color: ${theme.colors.text.gray};
+      transition: color 0.2s ease;
+      text-decoration: none;
+      &:hover {
+        color: ${theme.colors.text.primary};
+      }
+    }
   `}
 `;

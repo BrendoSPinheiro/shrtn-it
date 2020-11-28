@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
 const wrapperModifiers = {
-  white: (theme) => css`
-    color: ${theme.colors.text.secondary};
+  white: () => css`
+    color: #fafafa;
   `,
 
-  purple: (theme) => css`
-    color: ${theme.colors.text.primary};
+  purple: () => css`
+    color: #7161ef;
   `,
 
   weight: (theme) => css`
@@ -18,13 +18,13 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div`
   ${({ theme, color, weight }) => css`
-    font-size: ${theme.font.size.medium};
+    font-size: max(${theme.font.size.medium}, 90%);
 
     & h1 {
       font-weight: ${theme.font.normal};
     }
 
-    ${!!color && wrapperModifiers[color](theme)};
+    ${!!color && wrapperModifiers[color]()};
     ${!!weight && wrapperModifiers.weight(theme)};
   `}
 `;
