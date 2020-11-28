@@ -41,7 +41,9 @@ export const HeaderJumbo = styled(Header)`
 `;
 
 export const Search = styled(Header)`
-  gap: 2rem;
+  ${({ theme }) => css`
+    gap: ${theme.spacing.medium};
+  `}
 `;
 
 export const InputSearch = styled.input`
