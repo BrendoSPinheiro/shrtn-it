@@ -8,7 +8,7 @@ const Header = () => (
     <S.Header>
       <ToggleTheme />
       <S.Button>
-        <LogOutIcon size={40} />
+        <LogOutIcon size={24} />
       </S.Button>
     </S.Header>
     <S.BorderBottom />

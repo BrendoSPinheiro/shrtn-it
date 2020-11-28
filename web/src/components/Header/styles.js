@@ -42,7 +42,6 @@ export const Button = styled.button`
     &:hover {
       /* opacity: 0.6; */
       svg {
-        opacity: 0.6;
         color: ${theme.colors.icons.red};
       }
     }
