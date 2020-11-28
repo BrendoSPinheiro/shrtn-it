@@ -12,9 +12,11 @@ export default {
     normal: 400,
     bold: 600,
     size: {
+      xmall: '1.2rem',
       small: '1.6rem',
       medium: '1.8rem',
-      large: '3rem',
+      large: '2.4rem',
+      xlarge: '3rem',
     },
   },
 
@@ -41,9 +43,12 @@ export default {
     background: {
       mainBg: '#312E46',
       secondBg: '#423F5B',
+      jumboBg: '#312E46',
+      inputBg: '#423F5B',
     },
     stroke: {
       primary: '#67628C',
+      secondary: '#1F1B3D',
     },
 
     icons: {

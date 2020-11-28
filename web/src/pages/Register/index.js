@@ -18,24 +18,27 @@ const Register = () => {
             <Title color="purple" customClass="title-form-login">
               Cadastrar
             </Title>
-            {content.map(({ id, children, type, icon, alternativeText }) => (
-              <InputForm
-                key={id}
-                icon={icon}
-                type={type}
-                alternativeText={
-                  !!alternativeText && {
-                    url: alternativeText.url,
-                    name: alternativeText.name,
+            {content.map(
+              ({ id, children, type, icon, alternativeText, placeholder }) => (
+                <InputForm
+                  key={id}
+                  icon={icon}
+                  type={type}
+                  alternativeText={
+                    !!alternativeText && {
+                      url: alternativeText.url,
+                      name: alternativeText.name,
+                    }
                   }
-                }
-              >
-                {children}
-              </InputForm>
-            ))}
+                  placeholder={placeholder}
+                >
+                  {children}
+                </InputForm>
+              )
+            )}
             <Button sie="medium">Entrar</Button>
             <S.Alternative>
-              Não tem conta? <Link to="/register">criar conta</Link>
+              Já tem conta? <Link to="/login">login</Link>
             </S.Alternative>
           </form>
         </S.SectionForm>

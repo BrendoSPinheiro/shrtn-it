@@ -5,6 +5,7 @@ export default [
     children: 'Email',
     type: 'mail',
     icon: <MainIcon />,
+    placeholder: 'mail@mail.com',
     alternativeText: null,
   },
   {
@@ -12,10 +13,8 @@ export default [
     children: 'Senha',
     type: 'text',
     icon: <LockIcon />,
+    placeholder: 'Sua melhor senha',
 
-    alternativeText: {
-      name: 'Esqueci a senha',
-      url: '#',
-    },
+    alternativeText: null,
   },
 ];

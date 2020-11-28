@@ -1,7 +1,13 @@
 import * as S from './styles';
 
 import { Link } from 'react-router-dom';
-const InputForm = ({ children, type, icon, alternativeText = null }) => {
+const InputForm = ({
+  children,
+  type,
+  icon,
+  alternativeText = null,
+  placeholder,
+}) => {
   return (
     <S.Wrapper>
       <S.Name>
@@ -13,7 +19,7 @@ const InputForm = ({ children, type, icon, alternativeText = null }) => {
         )}
       </S.Name>
       <S.InputLabel>
-        {icon} <S.Input type={type} />
+        {icon} <S.Input type={type} placeholder={placeholder} />
       </S.InputLabel>
     </S.Wrapper>
   );

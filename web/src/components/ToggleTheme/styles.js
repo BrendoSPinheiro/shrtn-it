@@ -1,3 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.label``;
+export const Wrapper = styled.label`
+  ${({ theme }) => css`
+    & > .react-switch {
+      margin: 0 ${theme.spacing.medium};
+    }
+  `}
+`;
