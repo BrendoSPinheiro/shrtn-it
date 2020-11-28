@@ -6,7 +6,12 @@ import Button from '../../components/Button';
 import Jumbotron from '../../components/Jumbotron';
 import ModalCreateUrl from '../../components/ModalCreateUrl';
 
-import { FiPlus as PlusIcon, FiSearch as SearchIcon } from 'react-icons/fi';
+import {
+  FiPlus as PlusIcon,
+  FiSearch as SearchIcon,
+  FiTrash2 as TrashIcon,
+  FiExternalLink as ExternalLinkIcon,
+} from 'react-icons/fi';
 
 import useTheme from '../../utils/useTheme';
 
@@ -39,6 +44,22 @@ const Dashboard = () => {
                 <Button size="small" icon={<SearchIcon size={24} />} />
               </S.Search>
             </S.HeaderJumbo>
+            <S.WrapperLinks>
+              <div>
+                <S.ShortenedLink>
+                  <h1>site1.com.br</h1>
+                  <button>
+                    <TrashIcon size={16} />
+                  </button>
+                </S.ShortenedLink>
+                <S.RealLink>
+                  <h1>shrt.si15.com</h1>
+                  <button>
+                    <ExternalLinkIcon size={16} />
+                  </button>
+                </S.RealLink>
+              </div>
+            </S.WrapperLinks>
           </Jumbotron>
           <Jumbotron />
         </S.Main>

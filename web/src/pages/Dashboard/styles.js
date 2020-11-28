@@ -63,3 +63,61 @@ export const InputSearch = styled.input`
     }
   `}
 `;
+
+export const WrapperLinks = styled.div`
+  ${({ theme }) => css`
+    padding: ${theme.spacing.medium};
+    & > div {
+      margin-top: ${theme.spacing.medium};
+    }
+  `}
+`;
+export const ShortenedLink = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      color: ${theme.colors.text.secondary};
+      font-size: ${theme.font.size.small};
+    }
+    button {
+      background: transparent;
+      border: 0;
+
+      cursor: pointer;
+
+      svg {
+        color: ${theme.colors.icons.red};
+        transition: opacity 0.4s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  `}
+`;
+export const RealLink = styled(ShortenedLink)`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacing.xsmall};
+    padding-bottom: ${theme.spacing.medium};
+    border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+    h1 {
+      color: ${theme.colors.text.primary};
+      font-size: ${theme.font.size.xmall};
+    }
+
+    button {
+      svg {
+        color: ${theme.colors.icons.blue};
+        transition: opacity 0.4s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  `}
+`;
