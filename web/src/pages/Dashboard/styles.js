@@ -8,12 +8,9 @@ export const Wrapper = styled.div`
 `;
 
 export const SectionContent = styled.div`
-  ${({ theme }) =>
-    css`
-      max-width: 200rem;
-      margin: 0 auto;
-      padding: 2.3rem ${theme.spacing.xxlarge} 0;
-    `};
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 0 2%;
 `;
 
 export const Header = styled.div`
@@ -26,8 +23,13 @@ export const Main = styled.main`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
-
+    gap: 2rem;
     margin-top: ${theme.spacing.xlarge};
+
+    @media(max-width: 1050px){
+      flex-direction column;
+      align-items: center;
+    }
   `}
 `;
 
