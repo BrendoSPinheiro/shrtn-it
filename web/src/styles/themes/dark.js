@@ -41,9 +41,11 @@ export default {
     background: {
       mainBg: '#312E46',
       secondBg: '#423F5B',
+      jumboBg: '#312E46',
     },
     stroke: {
       primary: '#67628C',
+      secondary: '#1F1B3D',
     },
 
     icons: {

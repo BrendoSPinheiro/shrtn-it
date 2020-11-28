@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
     width: 100%;
     max-width: 55rem;
     min-height: 59rem;
-    background: ${theme.colors.background.mainBg};
+    background: ${theme.colors.background.jumboBg};
+    border: 0.1rem solid ${theme.colors.stroke.secondary};
     border-radius: ${theme.border.bgRadius};
     padding: ${theme.spacing.xlarge} 5rem;
 
