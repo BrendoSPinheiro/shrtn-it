@@ -4,7 +4,11 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
     max-width: 55rem;
-    min-height: 59rem;
+
+    height: 59rem;
+
+    overflow-y: auto;
+
     background: ${theme.colors.background.jumboBg};
     border: 0.1rem solid ${theme.colors.stroke.secondary};
     border-radius: ${theme.border.bgRadius};
