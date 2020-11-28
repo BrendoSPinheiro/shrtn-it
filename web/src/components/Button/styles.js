@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 
 const wrapperModifiers = {
   small: (theme) => css`
-    width: 100%;
-    max-width: 3.4rem;
+    width: 3.4rem;
     height: 3.4rem;
     font-size: ${theme.font.size.small};
   `,
