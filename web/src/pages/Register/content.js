@@ -9,6 +9,7 @@ export default [
     children: 'Nome',
     type: 'text',
     icon: <UserIcon />,
+    placeholder: 'Fulano Cicrano',
     alternativeText: null,
   },
   {
@@ -16,6 +17,7 @@ export default [
     children: 'Email',
     type: 'email',
     icon: <MailIcon />,
+    placeholder: 'mail@mail.com',
     alternativeText: null,
   },
   {
@@ -23,6 +25,7 @@ export default [
     children: 'Senha',
     type: 'password',
     icon: <UnlockIcon />,
+    placeholder: 'Sua melhor senha',
     alternativeText: null,
   },
 ];

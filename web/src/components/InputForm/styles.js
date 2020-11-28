@@ -35,6 +35,11 @@ export const Input = styled.input`
     color: ${theme.colors.text.secondary};
     background: none;
     width: 95%;
+
+    &::placeholder {
+      color: ${theme.colors.text.gray};
+      font-style: italic;
+    }
   `}
 `;
 
