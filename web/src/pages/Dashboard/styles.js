@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
 export const SectionContent = styled.div`
   ${({ theme }) =>
     css`
+      max-width: 200rem;
+      margin: 0 auto;
       padding: 2.3rem ${theme.spacing.xxlarge} 0;
     `};
 `;
@@ -117,6 +119,92 @@ export const RealLink = styled(ShortenedLink)`
         &:hover {
           opacity: 0.6;
         }
+      }
+    }
+  `}
+`;
+
+export const HeaderJumboDetails = styled(HeaderJumbo)``;
+export const Date = styled.div`
+  ${({ theme }) => css`
+    font-size: ${theme.font.size.small};
+    font-weight: ${theme.font.normal};
+    span {
+      color: ${theme.colors.text.gray};
+    }
+    p {
+      color: ${theme.colors.text.primary};
+    }
+  `}
+`;
+
+export const WrapperLinkDetails = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacing.medium};
+  `}
+`;
+export const Icons = styled.div`
+  ${({ theme }) => css`
+    button:first-of-type svg {
+      color: ${theme.colors.icons.red};
+      margin-right: ${theme.spacing.medium};
+    }
+    button:last-of-type svg {
+      color: ${theme.colors.icons.blue};
+    }
+  `}
+`;
+export const ShortenedLinkDetail = styled(ShortenedLink)`
+  ${({ theme }) => css`
+    h1 {
+      font-size: ${theme.font.size.xlarge};
+      color: ${theme.colors.text.primary};
+      font-weight: ${theme.font.normal};
+    }
+  `}
+`;
+export const RealLinkDetail = styled(RealLink)`
+  ${({ theme }) => css`
+    h1 {
+      font-size: ${theme.font.size.large};
+      color: ${theme.colors.text.secondary};
+      font-weight: ${theme.font.normal};
+    }
+
+    p {
+      margin-top: calc(${theme.spacing.xlarge} * 2);
+      font-size: ${theme.font.size.medium};
+      color: ${theme.colors.text.secondary};
+      font-weight: ${theme.font.bold};
+    }
+    border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  `}
+`;
+export const ClickStats = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacing.large};
+
+    color: ${theme.colors.text.primary};
+    width: 4.6rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: ${theme.font.normal};
+      h1 {
+        font-size: ${theme.font.size.large};
+        font-weight: ${theme.font.normal};
+      }
+
+      p {
+        font-size: ${theme.font.size.small};
+        font-weight: ${theme.font.normal};
+        color: ${theme.colors.text.gray};
       }
     }
   `}

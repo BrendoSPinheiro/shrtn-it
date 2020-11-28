@@ -11,6 +11,7 @@ import {
   FiSearch as SearchIcon,
   FiTrash2 as TrashIcon,
   FiExternalLink as ExternalLinkIcon,
+  FiBarChart2 as BarCharIcon,
 } from 'react-icons/fi';
 
 import useTheme from '../../utils/useTheme';
@@ -61,7 +62,41 @@ const Dashboard = () => {
               </div>
             </S.WrapperLinks>
           </Jumbotron>
-          <Jumbotron />
+          <Jumbotron>
+            <S.HeaderJumboDetails>
+              <h1>Detalhes</h1>
+              <S.Date>
+                <span>Criado em:</span>
+                <p>29/10/2020</p>
+              </S.Date>
+            </S.HeaderJumboDetails>
+            <S.WrapperLinkDetails>
+              <S.ShortenedLinkDetail>
+                <h1>shrt.si19.com</h1>
+                <S.Icons>
+                  <button>
+                    <TrashIcon size={16} />
+                  </button>
+                  <button>
+                    <ExternalLinkIcon size={16} />
+                  </button>
+                </S.Icons>
+              </S.ShortenedLinkDetail>
+              <S.RealLinkDetail>
+                <h1>site2.com.br</h1>
+                <p>Estatísticas</p>
+              </S.RealLinkDetail>
+
+              <S.ClickStats>
+                <div>
+                  <BarCharIcon size={24} /> <h1>10</h1>
+                </div>
+                <div>
+                  <p>Clicks</p>
+                </div>
+              </S.ClickStats>
+            </S.WrapperLinkDetails>
+          </Jumbotron>
         </S.Main>
       </S.SectionContent>
       <ModalCreateUrl
