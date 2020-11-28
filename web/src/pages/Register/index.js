@@ -35,7 +35,7 @@ const Register = () => {
             ))}
             <Button sie="medium">Entrar</Button>
             <S.Alternative>
-              Não tem conta? <Link to="/register">criar conta</Link>
+              Já tem conta? <Link to="/login">login</Link>
             </S.Alternative>
           </form>
         </S.SectionForm>
