@@ -44,6 +44,7 @@ export default {
       mainBg: '#7161EF',
       secondBg: '#FAFAFA',
       jumboBg: '#FFFFFF',
+      inputBg: '#FFFFFF',
     },
 
     stroke: {
