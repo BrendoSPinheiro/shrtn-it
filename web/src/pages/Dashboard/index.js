@@ -45,16 +45,20 @@ const Dashboard = () => {
                 <Button size="small" icon={<SearchIcon size={24} />} />
               </S.Search>
             </S.HeaderJumbo>
+
             <S.WrapperLinks>
               <div>
                 <S.ShortenedLink>
                   <h1>site1.com.br</h1>
+
                   <button>
                     <TrashIcon size={16} />
                   </button>
                 </S.ShortenedLink>
+
                 <S.RealLink>
                   <h1>shrt.si15.com</h1>
+
                   <button>
                     <ExternalLinkIcon size={16} />
                   </button>
@@ -62,28 +66,36 @@ const Dashboard = () => {
               </div>
             </S.WrapperLinks>
           </Jumbotron>
+
           <Jumbotron>
             <S.HeaderJumboDetails>
               <h1>Detalhes</h1>
+
               <S.Date>
                 <span>Criado em:</span>
+
                 <p>29/10/2020</p>
               </S.Date>
             </S.HeaderJumboDetails>
+
             <S.WrapperLinkDetails>
               <S.ShortenedLinkDetail>
                 <h1>shrt.si19.com</h1>
+
                 <S.Icons>
                   <button>
                     <TrashIcon size={16} />
                   </button>
+
                   <button>
                     <ExternalLinkIcon size={16} />
                   </button>
                 </S.Icons>
               </S.ShortenedLinkDetail>
+
               <S.RealLinkDetail>
                 <h1>site2.com.br</h1>
+
                 <p>Estatísticas</p>
               </S.RealLinkDetail>
 
@@ -91,6 +103,7 @@ const Dashboard = () => {
                 <div>
                   <BarCharIcon size={24} /> <h1>10</h1>
                 </div>
+
                 <div>
                   <p>Clicks</p>
                 </div>
@@ -99,6 +112,7 @@ const Dashboard = () => {
           </Jumbotron>
         </S.Main>
       </S.SectionContent>
+
       <ModalCreateUrl
         onClick={() => setHideModal(!hideModal)}
         hideModal={hideModal}

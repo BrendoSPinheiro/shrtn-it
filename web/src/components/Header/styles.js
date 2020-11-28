@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
 
 export const Header = styled.header`
   ${({ theme }) => css`
+    max-width: 200rem;
+    margin: 0 auto;
     padding: 0 ${theme.spacing.xxlarge};
     display: flex;
     align-items: center;
