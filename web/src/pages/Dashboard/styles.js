@@ -4,6 +4,8 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     height: 100vh;
     background-color: ${theme.colors.background.secondBg};
+       @media(max-width: 1050px){
+       height: auto;
   `}
 `;
 
