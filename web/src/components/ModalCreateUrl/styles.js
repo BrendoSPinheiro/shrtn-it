@@ -35,6 +35,8 @@ export const Modal = styled.div`
 
     box-shadow: 10px 129px 62px rgba(0, 0, 0, 0.027476),
       10px 44.6328px 20.5416px rgba(0, 0, 0, 0.0403763);
+
+    z-index: 999;
   `}
 `;
 
