@@ -11,7 +11,7 @@ class UrlController {
 
     const listUrl = new ListUrlService();
 
-    const urls = listUrl.execute(userId);
+    const urls = await listUrl.execute(userId);
 
     res.json(UrlDto.renderMany(urls));
   }
