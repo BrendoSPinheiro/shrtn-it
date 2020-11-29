@@ -5,8 +5,15 @@ const api = axios.create({
 });
 
 export const createUser = async (name, email, password) => {
-  const { data } = await api.post('/users', {
+  await api.post('/users', {
     name,
+    email,
+    password,
+  });
+};
+
+export const sessionAuth = async (email, password) => {
+  const { data } = await api.post('/sessions', {
     email,
     password,
   });

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import * as S from './styles';
 
 import Title from '../../components/Title';
@@ -7,14 +9,29 @@ import LayoutAuthenticate from '../../components/LayoutAuthenticate';
 
 import { Link } from 'react-router-dom';
 
+import { sessionAuth } from '../../services/api';
+
 import content from './content';
 
 const Login = () => {
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+
+    const { email, password } = formValues;
+
+    await sessionAuth(email, password);
+  };
+
   return (
     <S.Wrapper>
       <LayoutAuthenticate>
         <S.SectionForm>
-          <form>
+          <form onSubmit={handleSubmitForm}>
             <S.AlternativeMobile>
               <Title customClass="title-login">Seu Link curto e seguro</Title>
             </S.AlternativeMobile>
@@ -22,7 +39,15 @@ const Login = () => {
               Login
             </Title>
             {content.map(
-              ({ id, children, type, icon, alternativeText, placeholder }) => (
+              ({
+                id,
+                children,
+                type,
+                icon,
+                alternativeText,
+                placeholder,
+                nameState,
+              }) => (
                 <InputForm
                   key={id}
                   icon={icon}
@@ -34,6 +59,13 @@ const Login = () => {
                     }
                   }
                   placeholder={placeholder}
+                  value={formValues[nameState]}
+                  onChange={(event) =>
+                    setFormValues({
+                      ...formValues,
+                      [nameState]: event.target.value,
+                    })
+                  }
                 >
                   {children}
                 </InputForm>
