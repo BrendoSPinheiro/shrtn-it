@@ -4,8 +4,10 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     height: 100vh;
     background-color: ${theme.colors.background.secondBg};
-       @media(max-width: 1050px){
-       height: auto;
+
+    @media (max-width: 1050px) {
+      height: auto;
+    }
   `}
 `;
 
@@ -72,9 +74,12 @@ export const InputSearch = styled.input`
 
 export const WrapperLinks = styled.div`
   ${({ theme }) => css`
-    padding: ${theme.spacing.medium};
-    & > div {
-      margin-top: ${theme.spacing.medium};
+    padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
+      ${theme.spacing.medium};
+
+    cursor: pointer;
+    &:hover {
+      background: ${theme.colors.background.selectBg};
     }
   `}
 `;
