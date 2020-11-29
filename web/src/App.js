@@ -6,6 +6,8 @@ import 'react-dates/initialize';
 import 'moment/locale/pt-br';
 import moment from 'moment';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider as ThemeConsumer } from './context/theme';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   return (
     <ThemeConsumer>
       <Layout />
+      <ToastContainer />
     </ThemeConsumer>
   );
 }

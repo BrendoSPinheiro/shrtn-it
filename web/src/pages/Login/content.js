@@ -4,6 +4,7 @@ export default [
     id: 1,
     children: 'Email',
     type: 'mail',
+    nameState: 'email',
     icon: <MainIcon />,
     placeholder: 'mail@mail.com',
     alternativeText: null,
@@ -12,6 +13,7 @@ export default [
     id: 2,
     children: 'Senha',
     type: 'text',
+    nameState: 'password',
     icon: <LockIcon />,
     placeholder: 'Sua melhor senha',
 
