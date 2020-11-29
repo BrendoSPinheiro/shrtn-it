@@ -1,13 +1,16 @@
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { createUser } from '../../services/api';
+
+import { useHistory } from 'react-router-dom';
+
 import LayoutAuthenticate from '../../components/LayoutAuthenticate';
 import Title from '../../components/Title';
 import InputForm from '../../components/InputForm';
 import Button from '../../components/Button';
-
-import { Link } from 'react-router-dom';
-
-import { createUser } from '../../services/api';
 
 import * as S from './styles';
 
@@ -20,12 +23,22 @@ const Register = () => {
     password: '',
   });
 
+  const history = useHistory();
+
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    const { name, email, password } = formValues;
+    try {
+      const { name, email, password } = formValues;
 
-    await createUser(name, email, password);
+      await createUser(name, email, password);
+
+      toast.dark('Usuário criado com sucesso');
+
+      history.push('/login');
+    } catch (e) {
+      return toast.error('Email já cadastrado, tente novamente!');
+    }
   };
   return (
     <S.Wrapper>
@@ -58,13 +71,10 @@ const Register = () => {
                   placeholder={placeholder}
                   value={formValues[nameState]}
                   onChange={(event) =>
-                    setFormValues(
-                      {
-                        ...formValues,
-                        [nameState]: event.target.value,
-                      },
-                      console.log(formValues)
-                    )
+                    setFormValues({
+                      ...formValues,
+                      [nameState]: event.target.value,
+                    })
                   }
                 >
                   {children}
