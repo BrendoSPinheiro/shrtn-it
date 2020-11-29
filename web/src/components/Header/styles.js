@@ -8,15 +8,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.header`
-  ${({ theme }) => css`
-    max-width: 200rem;
-    margin: 0 auto;
-    padding: 0 ${theme.spacing.xxlarge};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 10rem;
-  `}
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 0 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10rem;
 `;
 export const BorderBottom = styled.div`
   ${({ theme }) => css`

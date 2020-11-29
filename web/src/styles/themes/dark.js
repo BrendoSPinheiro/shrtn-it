@@ -45,6 +45,7 @@ export default {
       secondBg: '#423F5B',
       jumboBg: '#312E46',
       inputBg: '#423F5B',
+      selectBg: '#423F5B',
     },
     stroke: {
       primary: '#67628C',

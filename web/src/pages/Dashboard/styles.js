@@ -4,16 +4,17 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     height: 100vh;
     background-color: ${theme.colors.background.secondBg};
+
+    @media (max-width: 1050px) {
+      height: auto;
+    }
   `}
 `;
 
 export const SectionContent = styled.div`
-  ${({ theme }) =>
-    css`
-      max-width: 200rem;
-      margin: 0 auto;
-      padding: 2.3rem ${theme.spacing.xxlarge} 0;
-    `};
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 0 2%;
 `;
 
 export const Header = styled.div`
@@ -26,8 +27,13 @@ export const Main = styled.main`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
-
+    gap: 2rem;
     margin-top: ${theme.spacing.xlarge};
+
+    @media(max-width: 1050px){
+      flex-direction column;
+      align-items: center;
+    }
   `}
 `;
 
@@ -68,9 +74,12 @@ export const InputSearch = styled.input`
 
 export const WrapperLinks = styled.div`
   ${({ theme }) => css`
-    padding: ${theme.spacing.medium};
-    & > div {
-      margin-top: ${theme.spacing.medium};
+    padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
+      ${theme.spacing.medium};
+
+    cursor: pointer;
+    &:hover {
+      background: ${theme.colors.background.selectBg};
     }
   `}
 `;
