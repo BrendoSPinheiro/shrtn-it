@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom';
 
 import { sessionAuth } from '../../services/api';
 
+import useUser from '../../utils/useUser';
+
 import content from './content';
+
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [formValues, setFormValues] = useState({
@@ -19,12 +23,23 @@ const Login = () => {
     password: '',
   });
 
+  const { setUser } = useUser();
+
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
     const { email, password } = formValues;
 
-    await sessionAuth(email, password);
+    try {
+      const data = await sessionAuth(email, password);
+
+      setUser(data);
+      toast.success('Seja bem vindo!', {
+        autoClose: 3000,
+      });
+    } catch (e) {
+      toast.error('Email ou senha invalido, tente novamente!');
+    }
   };
 
   return (
