@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
 
-const useUser = () => {
+const UseUser = () => {
   const context = UserContext(useContext);
 
   if (!context) throw new Error('userContext must be used within a useUser');
@@ -11,4 +11,4 @@ const useUser = () => {
   return { user, setUser };
 };
 
-export default useUser;
+export default UseUser;
