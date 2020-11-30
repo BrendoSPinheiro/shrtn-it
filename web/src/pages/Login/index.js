@@ -35,6 +35,7 @@ const Login = () => {
     event.preventDefault();
 
     setLoadingButton(true);
+    if (loadingButton) return;
 
     const { email, password } = formValues;
 
@@ -97,7 +98,7 @@ const Login = () => {
                 </InputForm>
               )
             )}
-            <Button fullWidth loading>
+            <Button fullWidth loading={loadingButton}>
               {loadingButton ? <div className="loading"></div> : 'Entrar'}
             </Button>
             <S.Alternative>
