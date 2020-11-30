@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+import UserProvider from '../../context/user';
 import GlobalStyles from '../../styles/global';
 
 import useTheme from '../../utils/useTheme';
@@ -10,8 +11,10 @@ const Layout = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Routes />
+      <UserProvider>
+        <GlobalStyles />
+        <Routes />
+      </UserProvider>
     </ThemeProvider>
   );
 };
