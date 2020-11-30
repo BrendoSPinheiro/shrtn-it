@@ -23,10 +23,15 @@ const Register = () => {
     password: '',
   });
 
+  const [loadingButton, setLoadingButton] = useState(false);
+
   const history = useHistory();
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
+
+    setLoadingButton(true);
+    if (loadingButton) return;
 
     try {
       const { name, email, password } = formValues;
@@ -37,7 +42,8 @@ const Register = () => {
 
       history.push('/login');
     } catch (e) {
-      return toast.error('Email já cadastrado, tente novamente!');
+      toast.error('Email já cadastrado, tente novamente!');
+      setLoadingButton(false);
     }
   };
   return (
@@ -81,7 +87,9 @@ const Register = () => {
                 </InputForm>
               )
             )}
-            <Button sie="medium">Entrar</Button>
+            <Button fullWidth loading={loadingButton}>
+              {loadingButton ? <div className="loading"></div> : 'Entrar'}
+            </Button>
             <S.Alternative>
               Já tem conta? <Link to="/login">login</Link>
             </S.Alternative>
