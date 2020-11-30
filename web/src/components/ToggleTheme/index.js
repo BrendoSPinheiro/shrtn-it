@@ -22,7 +22,7 @@ const ToggleTheme = () => {
   };
   return (
     <S.Wrapper>
-      <SunIcon size={30} color="#FAFAFA" />
+      <SunIcon size={24} color="#FAFAFA" />
       <Switch
         uncheckedIcon={false}
         checkedIcon={false}
@@ -38,7 +38,7 @@ const ToggleTheme = () => {
         handleDiameter={24}
         onChange={handleToggleTheme}
       />
-      <MoonIcon size={30} color="#FAFAFA" />
+      <MoonIcon size={24} color="#FAFAFA" />
     </S.Wrapper>
   );
 };
