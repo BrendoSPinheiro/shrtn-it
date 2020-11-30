@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+// import { useHistory } from 'react-router-dom';
+
 import * as S from './styles';
 
 import Title from '../../components/Title';
@@ -23,10 +25,16 @@ const Login = () => {
     password: '',
   });
 
+  const [loadingButton, setLoadingButton] = useState(false);
+
+  // const history = useHistory();
+
   const { setUser } = useUser();
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
+
+    setLoadingButton(true);
 
     const { email, password } = formValues;
 
@@ -37,8 +45,11 @@ const Login = () => {
       toast.success('Seja bem vindo!', {
         autoClose: 3000,
       });
+
+      // history.push('/dashboard');
     } catch (e) {
-      toast.error('Email ou senha invalido, tente novamente!');
+      setLoadingButton(false);
+      toast.error('Email ou senha inválidos, tente novamente!');
     }
   };
 
@@ -86,7 +97,9 @@ const Login = () => {
                 </InputForm>
               )
             )}
-            <Button sie="medium">Entrar</Button>
+            <Button fullWidth loading>
+              {loadingButton ? <div className="loading"></div> : 'Entrar'}
+            </Button>
             <S.Alternative>
               Não tem conta? <Link to="/register">criar conta</Link>
             </S.Alternative>
