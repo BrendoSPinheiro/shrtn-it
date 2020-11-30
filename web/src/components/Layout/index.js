@@ -4,7 +4,7 @@ import GlobalStyles from '../../styles/global';
 
 import useTheme from '../../utils/useTheme';
 
-import Routes from '../../routes';
+import Routes from '../../routes/';
 
 const Layout = () => {
   const { theme } = useTheme();
