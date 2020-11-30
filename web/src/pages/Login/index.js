@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import * as S from './styles';
 
@@ -27,7 +27,7 @@ const Login = () => {
 
   const [loadingButton, setLoadingButton] = useState(false);
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const { setUser } = useUser();
 
@@ -46,7 +46,7 @@ const Login = () => {
         autoClose: 3000,
       });
 
-      // history.push('/dashboard');
+      history.push('/dashboard');
     } catch (e) {
       setLoadingButton(false);
       toast.error('Email ou senha inválidos, tente novamente!');
