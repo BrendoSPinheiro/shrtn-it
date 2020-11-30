@@ -32,6 +32,8 @@ const wrapperModifiers = {
   loading: (theme) => css`
     background: ${theme.colors.button.hover};
 
+    cursor: not-allowed;
+
     .loading {
       border: 0.4rem solid #9085eb;
       border-left: 0.4rem solid #fff;
