@@ -12,7 +12,7 @@ export default [
   {
     id: 2,
     children: 'Senha',
-    type: 'text',
+    type: 'password',
     nameState: 'password',
     icon: <LockIcon />,
     placeholder: 'Sua melhor senha',
