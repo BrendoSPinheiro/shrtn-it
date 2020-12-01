@@ -4,8 +4,6 @@ const api = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 export const createUser = async (name, email, password) => {
   await api.post('/users', {
     name,
