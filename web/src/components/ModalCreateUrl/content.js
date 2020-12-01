@@ -8,12 +8,14 @@ export const content = [
     id: 1,
     children: 'Nome',
     type: 'text',
+    nameState: 'title',
     icon: <AlignLeftIcon />,
   },
   {
     id: 2,
     children: 'URL',
     type: 'text',
+    nameState: 'full_url',
     icon: <LinkIcon />,
   },
 ];
