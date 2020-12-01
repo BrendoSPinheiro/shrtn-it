@@ -14,8 +14,10 @@ import {
   FiBarChart2 as BarCharIcon,
 } from 'react-icons/fi';
 
+import { toast } from 'react-toastify';
+
 import useTheme from '../../utils/useTheme';
-import { listUrls } from '../../services/api';
+import { listUrls, deleteUrl } from '../../services/api';
 
 import useUser from '../../utils/useUser';
 
@@ -43,7 +45,17 @@ const Dashboard = () => {
       setUrls(data);
     })();
   }, [user, setUrls]);
-  console.log(urls);
+
+  const handleDeleteUrl = async (id) => {
+    const newArray = urls.filter((url) => id !== url.id);
+    setUrls(newArray);
+
+    await deleteUrl(id, user.token);
+
+    toast.dark('Url deletada com sucesso!', {
+      autoClose: 2000,
+    });
+  };
   return (
     <S.Wrapper>
       <Header />
@@ -75,7 +87,10 @@ const Dashboard = () => {
                     <h1>{title}</h1>
 
                     <button>
-                      <TrashIcon size={16} />
+                      <TrashIcon
+                        size={16}
+                        onClick={() => handleDeleteUrl(id)}
+                      />
                     </button>
                   </S.ShortenedLink>
 
