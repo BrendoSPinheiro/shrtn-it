@@ -79,10 +79,7 @@ const ModalCreateUrl = ({
                 icon={icon}
                 value={state[nameState]}
                 onChange={(event) =>
-                  setState(
-                    { ...state, [nameState]: event.target.value },
-                    console.log(state)
-                  )
+                  setState({ ...state, [nameState]: event.target.value })
                 }
               >
                 {children}

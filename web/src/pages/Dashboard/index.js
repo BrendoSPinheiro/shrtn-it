@@ -73,7 +73,6 @@ const Dashboard = () => {
 
     const newArray = urls;
 
-    console.log(data);
     newArray.push(data);
 
     setUrls(newArray);
