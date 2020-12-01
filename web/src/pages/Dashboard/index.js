@@ -21,6 +21,8 @@ import { listUrls, deleteUrl } from '../../services/api';
 
 import useUser from '../../utils/useUser';
 
+import { createUrl } from '../../services/api';
+
 import * as S from './styles';
 
 const Dashboard = () => {
@@ -35,6 +37,11 @@ const Dashboard = () => {
       short_url: '',
     },
   ]);
+
+  const [stateModal, setStateModal] = useState({
+    title: '',
+    full_url: '',
+  });
 
   const { user } = useUser();
 
@@ -55,6 +62,21 @@ const Dashboard = () => {
     toast.dark('Url deletada com sucesso!', {
       autoClose: 2000,
     });
+  };
+
+  const handleFormModalSubmit = async (event) => {
+    event.preventDefault();
+
+    const { title, full_url } = stateModal;
+
+    const [data] = await createUrl(user.token, { title, full_url });
+
+    const newArray = urls;
+
+    console.log(data);
+    newArray.push(data);
+
+    setUrls(newArray);
   };
   return (
     <S.Wrapper>
@@ -157,6 +179,9 @@ const Dashboard = () => {
       <ModalCreateUrl
         onClick={() => setHideModal(!hideModal)}
         hideModal={hideModal}
+        state={stateModal}
+        setState={setStateModal}
+        handleFormModal={handleFormModalSubmit}
       />
     </S.Wrapper>
   );

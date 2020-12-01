@@ -40,3 +40,17 @@ export const deleteUrl = async (id, token) => {
     headers: { Authorization: auth },
   });
 };
+
+export const createUrl = async (token, { title, full_url }) => {
+  const auth = `Bearer ${token}`;
+
+  const contentData = {
+    title,
+    full_url,
+  };
+  const { data } = await api.post('/urls', contentData, {
+    headers: { Authorization: auth },
+  });
+
+  return data;
+};

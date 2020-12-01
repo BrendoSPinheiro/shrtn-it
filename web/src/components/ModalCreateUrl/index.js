@@ -15,7 +15,13 @@ import Button from '../Button';
 import { content, optionsHour } from './content';
 import useTheme from '../../utils/useTheme';
 
-const ModalCreateUrl = ({ hideModal = true, onClick }) => {
+const ModalCreateUrl = ({
+  hideModal = true,
+  onClick,
+  state,
+  setState,
+  handleFormModal,
+}) => {
   const [translateIcon, setTranslateIcon] = useState(false);
   const [showDate, setShowDate] = useState('');
 
@@ -65,9 +71,20 @@ const ModalCreateUrl = ({ hideModal = true, onClick }) => {
             </S.Button>
           </S.Header>
 
-          <S.Form>
-            {content.map(({ id, type, children, icon }) => (
-              <InputForm key={id} type={type} icon={icon}>
+          <S.Form onSubmit={handleFormModal}>
+            {content.map(({ id, type, children, icon, nameState }) => (
+              <InputForm
+                key={id}
+                type={type}
+                icon={icon}
+                value={state[nameState]}
+                onChange={(event) =>
+                  setState(
+                    { ...state, [nameState]: event.target.value },
+                    console.log(state)
+                  )
+                }
+              >
                 {children}
               </InputForm>
             ))}
