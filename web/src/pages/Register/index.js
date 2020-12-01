@@ -88,7 +88,7 @@ const Register = () => {
               )
             )}
             <Button fullWidth loading={loadingButton}>
-              {loadingButton ? <div className="loading"></div> : 'Entrar'}
+              {loadingButton ? <div className="loading"></div> : 'Cadastrar'}
             </Button>
             <S.Alternative>
               Já tem conta? <Link to="/login">login</Link>
