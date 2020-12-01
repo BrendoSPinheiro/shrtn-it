@@ -4,8 +4,6 @@ const api = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 export const createUser = async (name, email, password) => {
   await api.post('/users', {
     name,
@@ -39,4 +37,18 @@ export const deleteUrl = async (id, token) => {
   await api.delete(`/urls/${id}`, {
     headers: { Authorization: auth },
   });
+};
+
+export const createUrl = async (token, { title, full_url }) => {
+  const auth = `Bearer ${token}`;
+
+  const contentData = {
+    title,
+    full_url,
+  };
+  const { data } = await api.post('/urls', contentData, {
+    headers: { Authorization: auth },
+  });
+
+  return data;
 };
