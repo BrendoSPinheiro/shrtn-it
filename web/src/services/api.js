@@ -33,3 +33,10 @@ export const listUrls = async (token) => {
 
   return data;
 };
+
+export const deleteUrl = async (id, token) => {
+  const auth = `Bearer ${token}`;
+  await api.delete(`/urls/${id}`, {
+    headers: { Authorization: auth },
+  });
+};
