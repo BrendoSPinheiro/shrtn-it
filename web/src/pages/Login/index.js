@@ -1,3 +1,7 @@
+import { useState } from 'react';
+
+import { useHistory } from 'react-router-dom';
+
 import * as S from './styles';
 
 import Title from '../../components/Title';
@@ -7,14 +11,54 @@ import LayoutAuthenticate from '../../components/LayoutAuthenticate';
 
 import { Link } from 'react-router-dom';
 
+import { sessionAuth } from '../../services/api';
+
+import useUser from '../../utils/useUser';
+
 import content from './content';
 
+import { toast } from 'react-toastify';
+
 const Login = () => {
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [loadingButton, setLoadingButton] = useState(false);
+
+  const history = useHistory();
+
+  const { setUser } = useUser();
+
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+
+    setLoadingButton(true);
+    if (loadingButton) return;
+
+    const { email, password } = formValues;
+
+    try {
+      const data = await sessionAuth(email, password);
+
+      setUser(data);
+      toast.success('Seja bem vindo!', {
+        autoClose: 3000,
+      });
+
+      history.push('/dashboard');
+    } catch (e) {
+      setLoadingButton(false);
+      toast.error('Email ou senha inválidos, tente novamente!');
+    }
+  };
+
   return (
     <S.Wrapper>
       <LayoutAuthenticate>
         <S.SectionForm>
-          <form>
+          <form onSubmit={handleSubmitForm}>
             <S.AlternativeMobile>
               <Title customClass="title-login">Seu Link curto e seguro</Title>
             </S.AlternativeMobile>
@@ -22,7 +66,15 @@ const Login = () => {
               Login
             </Title>
             {content.map(
-              ({ id, children, type, icon, alternativeText, placeholder }) => (
+              ({
+                id,
+                children,
+                type,
+                icon,
+                alternativeText,
+                placeholder,
+                nameState,
+              }) => (
                 <InputForm
                   key={id}
                   icon={icon}
@@ -34,12 +86,21 @@ const Login = () => {
                     }
                   }
                   placeholder={placeholder}
+                  value={formValues[nameState]}
+                  onChange={(event) =>
+                    setFormValues({
+                      ...formValues,
+                      [nameState]: event.target.value,
+                    })
+                  }
                 >
                   {children}
                 </InputForm>
               )
             )}
-            <Button sie="medium">Entrar</Button>
+            <Button fullWidth loading={loadingButton}>
+              {loadingButton ? <div className="loading"></div> : 'Entrar'}
+            </Button>
             <S.Alternative>
               Não tem conta? <Link to="/register">criar conta</Link>
             </S.Alternative>

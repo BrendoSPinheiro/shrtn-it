@@ -11,18 +11,18 @@ import Dark from '../../styles/themes/dark';
 import Light from '../../styles/themes/light';
 
 const ToggleTheme = () => {
-  const [checked, setChecked] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const { setTheme } = useTheme();
+  const [checked, setChecked] = useState(theme.name === 'dark');
 
   const handleToggleTheme = () => {
     setChecked(!checked);
 
-    checked ? setTheme(Light) : setTheme(Dark);
+    theme.name === 'dark' ? setTheme(Light) : setTheme(Dark);
   };
   return (
     <S.Wrapper>
-      <SunIcon size={30} color="#FAFAFA" />
+      <SunIcon size={24} color="#FAFAFA" />
       <Switch
         uncheckedIcon={false}
         checkedIcon={false}
@@ -33,9 +33,12 @@ const ToggleTheme = () => {
         offHandleColor="#FFF"
         boxShadow="none"
         className="react-switch"
+        width={46}
+        height={18}
+        handleDiameter={24}
         onChange={handleToggleTheme}
       />
-      <MoonIcon size={30} color="#FAFAFA" />
+      <MoonIcon size={24} color="#FAFAFA" />
     </S.Wrapper>
   );
 };

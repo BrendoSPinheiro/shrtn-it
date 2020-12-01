@@ -7,6 +7,8 @@ const InputForm = ({
   icon,
   alternativeText = null,
   placeholder,
+  value,
+  onChange,
 }) => {
   return (
     <S.Wrapper>
@@ -19,7 +21,13 @@ const InputForm = ({
         )}
       </S.Name>
       <S.InputLabel>
-        {icon} <S.Input type={type} placeholder={placeholder} />
+        {icon}{' '}
+        <S.Input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
       </S.InputLabel>
     </S.Wrapper>
   );

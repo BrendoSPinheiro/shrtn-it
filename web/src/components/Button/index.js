@@ -5,6 +5,7 @@ const Button = ({
   icon,
   size = 'medium',
   fullWidth = false,
+  loading = false,
   onClick,
 }) => (
   <S.Wrapper
@@ -12,6 +13,7 @@ const Button = ({
     fullWidth={fullWidth}
     hasIcon={!!icon}
     onClick={onClick}
+    hasLoading={!!loading}
   >
     {!!icon && icon}
     {!!children && <span>{children}</span>}
