@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { createUser } from '../../services/api';
-
 import { useHistory } from 'react-router-dom';
 
 import LayoutAuthenticate from '../../components/LayoutAuthenticate';
@@ -13,6 +11,8 @@ import InputForm from '../../components/InputForm';
 import Button from '../../components/Button';
 
 import * as S from './styles';
+
+import { createUser } from '../../services/api';
 
 import content from './content';
 
