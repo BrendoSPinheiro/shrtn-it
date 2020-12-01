@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
@@ -15,6 +15,9 @@ import {
 } from 'react-icons/fi';
 
 import useTheme from '../../utils/useTheme';
+import { listUrls } from '../../services/api';
+
+import useUser from '../../utils/useUser';
 
 import * as S from './styles';
 
@@ -22,6 +25,25 @@ const Dashboard = () => {
   const { theme } = useTheme();
 
   const [hideModal, setHideModal] = useState(true);
+
+  const [urls, setUrls] = useState([
+    {
+      id: 0,
+      title: '',
+      short_url: '',
+    },
+  ]);
+
+  const { user } = useUser();
+
+  useEffect(() => {
+    (async () => {
+      const data = await listUrls(user.token);
+
+      setUrls(data);
+    })();
+  }, [user, setUrls]);
+  console.log(urls);
   return (
     <S.Wrapper>
       <Header />
@@ -46,25 +68,29 @@ const Dashboard = () => {
               </S.Search>
             </S.HeaderJumbo>
 
-            <S.WrapperLinks>
-              <div>
-                <S.ShortenedLink>
-                  <h1>site1.com.br</h1>
+            {urls.map(({ id, title, short_url }) => (
+              <S.WrapperLinks key={id}>
+                <div>
+                  <S.ShortenedLink>
+                    <h1>{title}</h1>
 
-                  <button>
-                    <TrashIcon size={16} />
-                  </button>
-                </S.ShortenedLink>
+                    <button>
+                      <TrashIcon size={16} />
+                    </button>
+                  </S.ShortenedLink>
 
-                <S.RealLink>
-                  <h1>shrt.si15.com</h1>
+                  <S.RealLink>
+                    <h1>{short_url}</h1>
 
-                  <button>
-                    <ExternalLinkIcon size={16} />
-                  </button>
-                </S.RealLink>
-              </div>
-            </S.WrapperLinks>
+                    <button>
+                      <a target="_blank" rel="noreferrer" href={short_url}>
+                        <ExternalLinkIcon size={16} />
+                      </a>
+                    </button>
+                  </S.RealLink>
+                </div>
+              </S.WrapperLinks>
+            ))}
           </Jumbotron>
 
           <Jumbotron>
