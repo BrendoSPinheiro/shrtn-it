@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { DateRangePicker } from 'react-dates';
 
@@ -21,6 +21,7 @@ const ModalCreateUrl = ({
   state,
   setState,
   handleFormModal,
+  stateButton,
 }) => {
   const [translateIcon, setTranslateIcon] = useState(false);
   const [showDate, setShowDate] = useState('');
@@ -35,6 +36,10 @@ const ModalCreateUrl = ({
   const [/*hour,*/ setHour] = useState(1);
 
   const { theme } = useTheme();
+
+  useEffect(() => {
+    return () => console.log('componente sendo desmontado :(');
+  }, []);
 
   const customStyles = {
     option: (provided, state) => ({
@@ -157,8 +162,8 @@ const ModalCreateUrl = ({
               </S.WrapperMoreOptions>
             </S.MoreOptions>
 
-            <Button size="medium" fullWidth>
-              Confirmar
+            <Button fullWidth loading={stateButton}>
+              {stateButton ? <div className="loading"></div> : 'Criar'}
             </Button>
           </S.Form>
         </S.Modal>
