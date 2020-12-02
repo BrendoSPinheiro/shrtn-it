@@ -142,10 +142,10 @@ const Dashboard = () => {
             </S.HeaderJumbo>
 
             {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks key={id}>
+              <S.WrapperLinks key={id} onClick={() => handleShowDetailsUrl(id)}>
                 <div>
                   <S.ShortenedLink>
-                    <h1 onClick={() => handleShowDetailsUrl(id)}>{title}</h1>
+                    <h1>{title}</h1>
 
                     <button>
                       <TrashIcon
@@ -156,9 +156,7 @@ const Dashboard = () => {
                   </S.ShortenedLink>
 
                   <S.RealLink>
-                    <h1 onClick={() => handleShowDetailsUrl(id)}>
-                      {short_url}
-                    </h1>
+                    <h1>{short_url}</h1>
 
                     <button>
                       <a target="_blank" rel="noreferrer" href={short_url}>
