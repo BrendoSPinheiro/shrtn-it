@@ -1,6 +1,7 @@
 const UrlDto = require('../dto/UrlDto');
 
 const ListUrlService = require('../services/url/ListUrlService');
+const DetailUrlService = require('../services/url/DetailUrlService');
 const RedirectUrlService = require('../services/url/RedirectUrlService');
 const CreateUrlService = require('../services/url/CreateUrlService');
 const DeleteUrlService = require('../services/url/DeleteUrlService');
@@ -14,6 +15,16 @@ class UrlController {
     const urls = await listUrl.execute(userId);
 
     res.json(UrlDto.renderMany(urls));
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const detailUrl = new DetailUrlService();
+
+    const url = await detailUrl.execute(id);
+
+    res.json(UrlDto.render(url));
   }
 
   async redirectUrl(req, res) {

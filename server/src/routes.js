@@ -8,6 +8,7 @@ const authMiddleware = require('./app/middlewares/authMiddleware');
 const router = Router();
 
 router.get('/urls', authMiddleware, UrlController.index);
+router.get('/urls/:id', authMiddleware, UrlController.show);
 router.get('/:slug', UrlController.redirectUrl);
 
 router.post('/urls', authMiddleware, UrlController.store);
