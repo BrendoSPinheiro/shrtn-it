@@ -21,6 +21,7 @@ const ModalCreateUrl = ({
   state,
   setState,
   handleFormModal,
+  stateButton,
 }) => {
   const [translateIcon, setTranslateIcon] = useState(false);
   const [showDate, setShowDate] = useState('');
@@ -79,10 +80,7 @@ const ModalCreateUrl = ({
                 icon={icon}
                 value={state[nameState]}
                 onChange={(event) =>
-                  setState(
-                    { ...state, [nameState]: event.target.value },
-                    console.log(state)
-                  )
+                  setState({ ...state, [nameState]: event.target.value })
                 }
               >
                 {children}
@@ -160,8 +158,8 @@ const ModalCreateUrl = ({
               </S.WrapperMoreOptions>
             </S.MoreOptions>
 
-            <Button size="medium" fullWidth>
-              Confirmar
+            <Button fullWidth loading={stateButton}>
+              {stateButton ? <div className="loading"></div> : 'Criar'}
             </Button>
           </S.Form>
         </S.Modal>
