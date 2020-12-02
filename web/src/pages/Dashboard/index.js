@@ -52,6 +52,8 @@ const Dashboard = () => {
     clicks: 0,
   });
 
+  const [loadingJumbo, setLoadingJumbo] = useState(false);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -112,9 +114,14 @@ const Dashboard = () => {
   };
 
   const handleShowDetailsUrl = async (id) => {
+    if (id === detailUrl.id) return;
+    setLoadingJumbo(true);
+
     const data = await detailsUrl(user.token, { id });
 
     setDetailUrl(data);
+
+    setLoadingJumbo(false);
   };
 
   return (
@@ -222,6 +229,11 @@ const Dashboard = () => {
                 </S.ClickStats>
               </S.WrapperLinkDetails>
             </Jumbotron>
+          )}
+          {loadingJumbo && (
+            <>
+              <S.LoadingJumbo />
+            </>
           )}
         </S.Main>
       </S.SectionContent>

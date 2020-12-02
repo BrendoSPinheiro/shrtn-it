@@ -96,6 +96,11 @@ export const ShortenedLink = styled.div`
       background: transparent;
       border: 0;
       cursor: pointer;
+
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(1.2);
+      }
       svg {
         color: ${theme.colors.icons.red};
         transition: opacity 0.4s ease;
@@ -215,4 +220,28 @@ export const ClickStats = styled.div`
       }
     }
   `}
+`;
+
+export const LoadingJumbo = styled.div`
+  border: 0.6rem solid #9085eb;
+  border-left: 0.6rem solid #eeedfc;
+  border-bottom: 0.6rem solid #eeedfc;
+
+  border-radius: 50%;
+
+  margin: auto;
+
+  width: 6rem;
+  height: 6rem;
+
+  animation: spinner 0.3s linear infinite;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
