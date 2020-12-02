@@ -77,6 +77,7 @@ const Dashboard = () => {
         });
       }
       await deleteUrl(id, user.token);
+      setLoadingJumbo(false);
 
       toast.dark('Url deletada com sucesso!', {
         autoClose: 2000,
@@ -114,9 +115,15 @@ const Dashboard = () => {
   };
 
   const handleShowDetailsUrl = async (id) => {
-    if (id === detailUrl.id) return;
+    if (id === detailUrl.id) return setLoadingJumbo(false);
     setLoadingJumbo(true);
 
+    setDetailUrl({
+      id: '',
+      title: '',
+      short_url: '',
+      clicks: 0,
+    });
     const data = await detailsUrl(user.token, { id });
 
     setDetailUrl(data);
