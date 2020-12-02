@@ -43,6 +43,8 @@ const Dashboard = () => {
     full_url: '',
   });
 
+  const [stateButtonModal, setStateButtonModal] = useState(false);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -69,14 +71,24 @@ const Dashboard = () => {
 
     const { title, full_url } = stateModal;
 
-    const [data] = await createUrl(user.token, { title, full_url });
+    setStateButtonModal(true);
 
-    const newArray = urls;
+    try {
+      const [data] = await createUrl(user.token, { title, full_url });
 
-    console.log(data);
-    newArray.push(data);
+      const newArray = urls;
 
-    setUrls(newArray);
+      newArray.push(data);
+
+      toast.dark('URL criada com sucesso!');
+      setUrls(newArray);
+
+      setHideModal(true);
+      setStateButtonModal(false);
+    } catch (error) {
+      toast.error('Erro ao criar a url');
+      setStateButtonModal(false);
+    }
   };
   return (
     <S.Wrapper>
@@ -182,6 +194,7 @@ const Dashboard = () => {
         state={stateModal}
         setState={setStateModal}
         handleFormModal={handleFormModalSubmit}
+        stateButton={stateButtonModal}
       />
     </S.Wrapper>
   );
