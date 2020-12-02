@@ -52,3 +52,14 @@ export const createUrl = async (token, { title, full_url }) => {
 
   return data;
 };
+
+export const detailsUrl = async (token, { id }) => {
+  const auth = `Bearer ${token}`;
+
+  const { data } = await api.get(`/urls/${id}`, {
+    headers: { Authorization: auth },
+  });
+
+  if (!data) return;
+  return data;
+};

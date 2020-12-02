@@ -96,8 +96,6 @@ export const ShortenedLink = styled.div`
       background: transparent;
       border: 0;
 
-      cursor: pointer;
-
       svg {
         color: ${theme.colors.icons.red};
         transition: opacity 0.4s ease;
