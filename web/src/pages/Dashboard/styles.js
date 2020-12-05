@@ -72,8 +72,13 @@ export const InputSearch = styled.input`
   `}
 `;
 
+const WrapperLinksModifiers = {
+  selected: (theme) => css`
+    background: ${theme.colors.background.selectBg};
+  `,
+};
 export const WrapperLinks = styled.div`
-  ${({ theme }) => css`
+  ${({ theme, selected }) => css`
     padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
       ${theme.spacing.medium};
 
@@ -81,6 +86,8 @@ export const WrapperLinks = styled.div`
     &:hover {
       background: ${theme.colors.background.selectBg};
     }
+
+    ${!!selected && WrapperLinksModifiers.selected(theme)}
   `}
 `;
 export const ShortenedLink = styled.div`
@@ -95,7 +102,12 @@ export const ShortenedLink = styled.div`
     button {
       background: transparent;
       border: 0;
+      cursor: pointer;
 
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(1.2);
+      }
       svg {
         color: ${theme.colors.icons.red};
         transition: opacity 0.4s ease;
@@ -179,7 +191,7 @@ export const RealLinkDetail = styled(RealLink)`
     }
 
     p {
-      margin-top: calc(${theme.spacing.xlarge} * 2);
+      margin-top: ${theme.spacing.xlarge};
       font-size: ${theme.font.size.medium};
       color: ${theme.colors.text.secondary};
       font-weight: ${theme.font.bold};
@@ -212,6 +224,67 @@ export const ClickStats = styled.div`
         font-size: ${theme.font.size.small};
         font-weight: ${theme.font.normal};
         color: ${theme.colors.text.gray};
+      }
+    }
+  `}
+`;
+
+export const LoadingJumbo = styled.div`
+  border: 0.6rem solid #9085eb;
+  border-left: 0.6rem solid #eeedfc;
+  border-bottom: 0.6rem solid #eeedfc;
+
+  border-radius: 50%;
+
+  margin: auto;
+
+  width: 6rem;
+  height: 6rem;
+
+  animation: spinner 0.3s linear infinite;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const QrCodeBox = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      width: 100%;
+      margin-top: ${theme.spacing.xlarge};
+      font-size: ${theme.font.size.medium};
+      color: ${theme.colors.text.secondary};
+      font-weight: ${theme.font.bold};
+      border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+      padding-bottom: ${theme.spacing.medium};
+    }
+    span {
+      width: 100%;
+      margin-top: ${theme.spacing.xsmall};
+      font-size: ${theme.font.size.xmall};
+      color: ${theme.colors.text.secondary};
+      font-family: 'Roboto', sans-serif;
+      font-weight: ${theme.font.normal};
+    }
+
+    svg {
+      margin-top: 2rem;
+
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(1.2);
       }
     }
   `}

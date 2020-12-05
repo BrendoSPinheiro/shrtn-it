@@ -53,6 +53,10 @@ const Dashboard = () => {
     clicks: 0,
   });
 
+  const [loadingJumbo, setLoadingJumbo] = useState(false);
+
+  // const [selectedLink, setSelectedLink] = useState(null);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -76,6 +80,7 @@ const Dashboard = () => {
         });
       }
       await deleteUrl(id, user.token);
+      setLoadingJumbo(false);
 
       toast.dark('Url deletada com sucesso!', {
         autoClose: 2000,
@@ -113,9 +118,21 @@ const Dashboard = () => {
   };
 
   const handleShowDetailsUrl = async (id) => {
+    if (id === detailUrl.id) return setLoadingJumbo(false);
+
+    setLoadingJumbo(true);
+
+    setDetailUrl({
+      id: '',
+      title: '',
+      short_url: '',
+      clicks: 0,
+    });
     const data = await detailsUrl(user.token, { id });
 
     setDetailUrl(data);
+
+    setLoadingJumbo(false);
   };
 
   return (
@@ -143,10 +160,14 @@ const Dashboard = () => {
             </S.HeaderJumbo>
 
             {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks key={id}>
+              <S.WrapperLinks
+                key={id}
+                onClick={() => handleShowDetailsUrl(id)}
+                selected={detailUrl.id === id}
+              >
                 <div>
                   <S.ShortenedLink>
-                    <h1 onClick={() => handleShowDetailsUrl(id)}>{title}</h1>
+                    <h1>{title}</h1>
 
                     <button>
                       <TrashIcon
@@ -157,9 +178,7 @@ const Dashboard = () => {
                   </S.ShortenedLink>
 
                   <S.RealLink>
-                    <h1 onClick={() => handleShowDetailsUrl(id)}>
-                      {short_url}
-                    </h1>
+                    <h1>{short_url}</h1>
 
                     <button>
                       <a target="_blank" rel="noreferrer" href={short_url}>
@@ -221,9 +240,25 @@ const Dashboard = () => {
                     <p>Cliques</p>
                   </div>
                 </S.ClickStats>
-                <QRCode value={detailUrl.short_url} />
+                <S.QrCodeBox>
+                  <p>Qr Code</p>
+                  <span>Com seu celular escaneie o código abaixo</span>
+                  <QRCode
+                    value={detailUrl.short_url}
+                    renderAs="svg"
+                    size={115}
+                    bgColor={theme.colors.background.jumboBg}
+                    fgColor={theme.colors.stroke.primary}
+                    level="Q"
+                  />
+                </S.QrCodeBox>
               </S.WrapperLinkDetails>
             </Jumbotron>
+          )}
+          {loadingJumbo && (
+            <>
+              <S.LoadingJumbo />
+            </>
           )}
         </S.Main>
       </S.SectionContent>
