@@ -55,6 +55,8 @@ const Dashboard = () => {
 
   const [loadingJumbo, setLoadingJumbo] = useState(false);
 
+  // const [selectedLink, setSelectedLink] = useState(null);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -117,6 +119,7 @@ const Dashboard = () => {
 
   const handleShowDetailsUrl = async (id) => {
     if (id === detailUrl.id) return setLoadingJumbo(false);
+
     setLoadingJumbo(true);
 
     setDetailUrl({
@@ -157,7 +160,11 @@ const Dashboard = () => {
             </S.HeaderJumbo>
 
             {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks key={id} onClick={() => handleShowDetailsUrl(id)}>
+              <S.WrapperLinks
+                key={id}
+                onClick={() => handleShowDetailsUrl(id)}
+                selected={detailUrl.id === id}
+              >
                 <div>
                   <S.ShortenedLink>
                     <h1>{title}</h1>

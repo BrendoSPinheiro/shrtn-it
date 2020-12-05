@@ -72,8 +72,13 @@ export const InputSearch = styled.input`
   `}
 `;
 
+const WrapperLinksModifiers = {
+  selected: (theme) => css`
+    background: ${theme.colors.background.selectBg};
+  `,
+};
 export const WrapperLinks = styled.div`
-  ${({ theme }) => css`
+  ${({ theme, selected }) => css`
     padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
       ${theme.spacing.medium};
 
@@ -81,6 +86,8 @@ export const WrapperLinks = styled.div`
     &:hover {
       background: ${theme.colors.background.selectBg};
     }
+
+    ${!!selected && WrapperLinksModifiers.selected(theme)}
   `}
 `;
 export const ShortenedLink = styled.div`
