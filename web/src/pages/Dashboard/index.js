@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import QRCode from 'qrcode.react';
 
 import useTheme from '../../utils/useTheme';
 
@@ -234,6 +235,7 @@ const Dashboard = () => {
                     <p>Cliques</p>
                   </div>
                 </S.ClickStats>
+                <QRCode value={detailUrl.short_url} />
               </S.WrapperLinkDetails>
             </Jumbotron>
           )}
