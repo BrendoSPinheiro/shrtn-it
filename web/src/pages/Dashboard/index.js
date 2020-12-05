@@ -1,4 +1,13 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
+import useTheme from '../../utils/useTheme';
+
+import { listUrls, deleteUrl } from '../../services/api';
+
+import useUser from '../../utils/useUser';
+
+import { createUrl, detailsUrl } from '../../services/api';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
@@ -13,15 +22,6 @@ import {
   FiExternalLink as ExternalLinkIcon,
   FiBarChart2 as BarCharIcon,
 } from 'react-icons/fi';
-
-import { toast } from 'react-toastify';
-
-import useTheme from '../../utils/useTheme';
-import { listUrls, deleteUrl } from '../../services/api';
-
-import useUser from '../../utils/useUser';
-
-import { createUrl } from '../../services/api';
 
 import * as S from './styles';
 
@@ -45,6 +45,15 @@ const Dashboard = () => {
 
   const [stateButtonModal, setStateButtonModal] = useState(false);
 
+  const [detailUrl, setDetailUrl] = useState({
+    id: '',
+    title: '',
+    short_url: '',
+    clicks: 0,
+  });
+
+  const [loadingJumbo, setLoadingJumbo] = useState(false);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -55,15 +64,29 @@ const Dashboard = () => {
     })();
   }, [user, setUrls]);
 
-  const handleDeleteUrl = async (id) => {
+  const handleDeleteUrl = async (id, detail = false) => {
     const newArray = urls.filter((url) => id !== url.id);
     setUrls(newArray);
+    try {
+      if (detail) {
+        setDetailUrl({
+          id: '',
+          title: '',
+          short_url: '',
+          clicks: 0,
+        });
+      }
+      await deleteUrl(id, user.token);
+      setLoadingJumbo(false);
 
-    await deleteUrl(id, user.token);
-
-    toast.dark('Url deletada com sucesso!', {
-      autoClose: 2000,
-    });
+      toast.dark('Url deletada com sucesso!', {
+        autoClose: 2000,
+      });
+    } catch (error) {
+      toast.error('Erro ao deletar a url', {
+        autoClose: 2000,
+      });
+    }
   };
 
   const handleFormModalSubmit = async (event) => {
@@ -90,6 +113,24 @@ const Dashboard = () => {
       setStateButtonModal(false);
     }
   };
+
+  const handleShowDetailsUrl = async (id) => {
+    if (id === detailUrl.id) return setLoadingJumbo(false);
+    setLoadingJumbo(true);
+
+    setDetailUrl({
+      id: '',
+      title: '',
+      short_url: '',
+      clicks: 0,
+    });
+    const data = await detailsUrl(user.token, { id });
+
+    setDetailUrl(data);
+
+    setLoadingJumbo(false);
+  };
+
   return (
     <S.Wrapper>
       <Header />
@@ -115,7 +156,7 @@ const Dashboard = () => {
             </S.HeaderJumbo>
 
             {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks key={id}>
+              <S.WrapperLinks key={id} onClick={() => handleShowDetailsUrl(id)}>
                 <div>
                   <S.ShortenedLink>
                     <h1>{title}</h1>
@@ -123,7 +164,7 @@ const Dashboard = () => {
                     <button>
                       <TrashIcon
                         size={16}
-                        onClick={() => handleDeleteUrl(id)}
+                        onClick={() => handleDeleteUrl(id, id === detailUrl.id)}
                       />
                     </button>
                   </S.ShortenedLink>
@@ -142,49 +183,65 @@ const Dashboard = () => {
             ))}
           </Jumbotron>
 
-          <Jumbotron>
-            <S.HeaderJumboDetails>
-              <h1>Detalhes</h1>
+          {detailUrl.id !== '' && (
+            <Jumbotron>
+              <S.HeaderJumboDetails>
+                <h1>Detalhes</h1>
 
-              <S.Date>
-                <span>Criado em:</span>
+                <S.Date>
+                  <span>Criado em:</span>
 
-                <p>29/10/2020</p>
-              </S.Date>
-            </S.HeaderJumboDetails>
+                  <p>29/10/2020</p>
+                </S.Date>
+              </S.HeaderJumboDetails>
 
-            <S.WrapperLinkDetails>
-              <S.ShortenedLinkDetail>
-                <h1>shrt.si19.com</h1>
+              <S.WrapperLinkDetails>
+                <S.ShortenedLinkDetail>
+                  <h1> {detailUrl.title}</h1>
 
-                <S.Icons>
-                  <button>
-                    <TrashIcon size={16} />
-                  </button>
+                  <S.Icons>
+                    <button>
+                      <TrashIcon
+                        size={16}
+                        onClick={() => handleDeleteUrl(detailUrl.id, true)}
+                      />
+                    </button>
 
-                  <button>
-                    <ExternalLinkIcon size={16} />
-                  </button>
-                </S.Icons>
-              </S.ShortenedLinkDetail>
+                    <button>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href={detailUrl.short_url}
+                      >
+                        <ExternalLinkIcon size={16} />
+                      </a>
+                    </button>
+                  </S.Icons>
+                </S.ShortenedLinkDetail>
 
-              <S.RealLinkDetail>
-                <h1>site2.com.br</h1>
+                <S.RealLinkDetail>
+                  <h1>{detailUrl.short_url}</h1>
 
-                <p>Estatísticas</p>
-              </S.RealLinkDetail>
+                  <p>Estatísticas</p>
+                </S.RealLinkDetail>
 
-              <S.ClickStats>
-                <div>
-                  <BarCharIcon size={24} /> <h1>10</h1>
-                </div>
+                <S.ClickStats>
+                  <div>
+                    <BarCharIcon size={24} /> <h1>{detailUrl.clicks}</h1>
+                  </div>
 
-                <div>
-                  <p>Clicks</p>
-                </div>
-              </S.ClickStats>
-            </S.WrapperLinkDetails>
-          </Jumbotron>
+                  <div>
+                    <p>Cliques</p>
+                  </div>
+                </S.ClickStats>
+              </S.WrapperLinkDetails>
+            </Jumbotron>
+          )}
+          {loadingJumbo && (
+            <>
+              <S.LoadingJumbo />
+            </>
+          )}
         </S.Main>
       </S.SectionContent>
 

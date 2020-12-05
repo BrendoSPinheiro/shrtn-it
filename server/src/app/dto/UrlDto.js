@@ -4,6 +4,7 @@ class UrlView {
       id: url.id,
       title: url.title,
       short_url: `http://localhost:3001/${url.slug}`,
+      clicks: url.count_click,
     };
   }
 
