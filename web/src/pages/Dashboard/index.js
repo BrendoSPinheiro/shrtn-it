@@ -235,7 +235,18 @@ const Dashboard = () => {
                     <p>Cliques</p>
                   </div>
                 </S.ClickStats>
-                <QRCode value={detailUrl.short_url} />
+                <S.QrCodeBox>
+                  <p>Qr Code</p>
+                  <span>Com seu celular escaneie o código abaixo</span>
+                  <QRCode
+                    value={detailUrl.short_url}
+                    renderAs="svg"
+                    size={115}
+                    bgColor={theme.colors.background.jumboBg}
+                    fgColor={theme.colors.stroke.primary}
+                    level="Q"
+                  />
+                </S.QrCodeBox>
               </S.WrapperLinkDetails>
             </Jumbotron>
           )}

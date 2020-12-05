@@ -184,7 +184,7 @@ export const RealLinkDetail = styled(RealLink)`
     }
 
     p {
-      margin-top: calc(${theme.spacing.xlarge} * 2);
+      margin-top: ${theme.spacing.xlarge};
       font-size: ${theme.font.size.medium};
       color: ${theme.colors.text.secondary};
       font-weight: ${theme.font.bold};
@@ -244,4 +244,41 @@ export const LoadingJumbo = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const QrCodeBox = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      width: 100%;
+      margin-top: ${theme.spacing.xlarge};
+      font-size: ${theme.font.size.medium};
+      color: ${theme.colors.text.secondary};
+      font-weight: ${theme.font.bold};
+      border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+      padding-bottom: ${theme.spacing.medium};
+    }
+    span {
+      width: 100%;
+      margin-top: ${theme.spacing.xsmall};
+      font-size: ${theme.font.size.xmall};
+      color: ${theme.colors.text.secondary};
+      font-family: 'Roboto', sans-serif;
+      font-weight: ${theme.font.normal};
+    }
+
+    svg {
+      margin-top: 2rem;
+
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  `}
 `;
