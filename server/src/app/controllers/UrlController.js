@@ -44,12 +44,23 @@ class UrlController {
   async store(req, res) {
     try {
       const { userId } = req;
-      const { title } = req.body;
-      const { full_url } = req.body;
+      const {
+        title,
+        full_url,
+        scheduling_type,
+      } = req.body;
+      const { start_expires_date, end_expires_date } = req.body;
 
       const createUrl = new CreateUrlService();
 
-      const url = await createUrl.execute({ title, full_url, userId });
+      const url = await createUrl.execute({
+        title,
+        full_url,
+        userId,
+        scheduling_type,
+        start_expires_date,
+        end_expires_date,
+      });
 
       return res.json(UrlDto.renderMany(url));
     } catch (error) {

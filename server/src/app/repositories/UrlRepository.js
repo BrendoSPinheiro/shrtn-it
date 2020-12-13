@@ -26,7 +26,13 @@ class UrlRepository {
 
   async create(urlData) {
     const url = await knex('urls')
-      .returning(['id', 'title', 'slug'])
+      .returning([
+        'id',
+        'title',
+        'slug',
+        'start_expires_date',
+        'end_expires_date',
+      ])
       .insert(urlData);
 
     return url;
