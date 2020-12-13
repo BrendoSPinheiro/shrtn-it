@@ -88,7 +88,7 @@ export const WrapperMoreOptions = styled.div`
   `}
 `;
 
-export const MoreOptions = styled.details`
+export const MoreOptions = styled.div`
   ${({ theme, translate }) => css`
     color: ${theme.colors.text.secondary};
 
@@ -108,6 +108,15 @@ export const MoreOptions = styled.details`
         margin-right: ${theme.spacing.xsmall};
       }
     }
+  `}
+`;
+
+export const Options = styled.div`
+  ${({ isShowOptions }) => css`
+    transition: 0.3s ease-in-out;
+    opacity: ${isShowOptions ? '1' : '0'};
+    pointer-events: ${isShowOptions ? 'all' : 'none'};
+    height: ${isShowOptions ? '100%' : '0'};
   `}
 `;
 

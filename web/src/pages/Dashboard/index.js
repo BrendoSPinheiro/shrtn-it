@@ -55,8 +55,6 @@ const Dashboard = () => {
 
   const [loadingJumbo, setLoadingJumbo] = useState(false);
 
-  // const [selectedLink, setSelectedLink] = useState(null);
-
   const { user } = useUser();
 
   useEffect(() => {
@@ -178,7 +176,7 @@ const Dashboard = () => {
                   </S.ShortenedLink>
 
                   <S.RealLink>
-                    <h1>{short_url}</h1>
+                    <h1>{short_url.replace('http://', '')}</h1>
 
                     <button>
                       <a target="_blank" rel="noreferrer" href={short_url}>
@@ -227,7 +225,7 @@ const Dashboard = () => {
                   </S.Icons>
                 </S.ShortenedLinkDetail>
                 <S.RealLinkDetail>
-                  <h1>{detailUrl.short_url}</h1>
+                  <h1>{detailUrl.short_url.replace('http://', '')}</h1>
 
                   <p>Estatísticas</p>
                 </S.RealLinkDetail>

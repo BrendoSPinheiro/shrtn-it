@@ -23,6 +23,7 @@ export const SectionDemonstration = styled.div`
     .title-login {
       width: 28.2rem;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin-bottom: 2rem;
     }
     @media (max-width: 840px) {
       display: none;
