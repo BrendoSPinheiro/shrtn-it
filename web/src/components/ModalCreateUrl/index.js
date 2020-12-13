@@ -33,8 +33,7 @@ const ModalCreateUrl = ({
 
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const [/*hour,*/ setHour] = useState(1);
-
+  const [, setHour] = useState(1);
   const { theme } = useTheme();
 
   const customStyles = {
@@ -50,7 +49,7 @@ const ModalCreateUrl = ({
     }),
     control: () => ({
       borderRadius: theme.border.buttonRadius,
-      width: '100px',
+      width: '10.6rem',
 
       display: 'flex',
       border: `0.1rem solid ${theme.colors.stroke.primary}`,
@@ -64,8 +63,14 @@ const ModalCreateUrl = ({
   const hideOnModal = () => {
     onClick();
 
+    //Reset States
     setShowDate('');
     setTranslateIcon(false);
+    setDate({
+      startDate: null,
+      endDate: null,
+    });
+    setHour(1);
   };
 
   return (
