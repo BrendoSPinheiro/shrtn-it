@@ -1,5 +1,5 @@
 const Yup = require('yup');
-const { isAfter, isBefore } = require('date-fns');
+const { isBefore } = require('date-fns');
 
 const UrlRepository = require('../../repositories/UrlRepository');
 const SlugGenerator = require('../../utils/SlugGenerator');
