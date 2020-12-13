@@ -224,13 +224,11 @@ const Dashboard = () => {
                     </button>
                   </S.Icons>
                 </S.ShortenedLinkDetail>
-
                 <S.RealLinkDetail>
                   <h1>{detailUrl.short_url.replace('http://', '')}</h1>
 
                   <p>Estatísticas</p>
                 </S.RealLinkDetail>
-
                 <S.ClickStats>
                   <div>
                     <BarCharIcon size={24} /> <h1>{detailUrl.clicks}</h1>
