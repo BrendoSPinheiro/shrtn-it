@@ -33,8 +33,7 @@ const ModalCreateUrl = ({
 
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const [/*hour,*/ setHour] = useState(1);
-
+  const [, setHour] = useState(1);
   const { theme } = useTheme();
 
   const customStyles = {
@@ -50,7 +49,7 @@ const ModalCreateUrl = ({
     }),
     control: () => ({
       borderRadius: theme.border.buttonRadius,
-      width: '100px',
+      width: '10.6rem',
 
       display: 'flex',
       border: `0.1rem solid ${theme.colors.stroke.primary}`,
@@ -61,13 +60,26 @@ const ModalCreateUrl = ({
     }),
   };
 
+  const hideOnModal = () => {
+    onClick();
+
+    //Reset States
+    setShowDate('');
+    setTranslateIcon(false);
+    setDate({
+      startDate: null,
+      endDate: null,
+    });
+    setHour(1);
+  };
+
   return (
     <>
       <S.Wrapper hideModal={hideModal}>
         <S.Modal>
           <S.Header>
             <S.Title>Criar uma URL</S.Title>
-            <S.Button onClick={onClick}>
+            <S.Button onClick={hideOnModal}>
               <XIcon size={24} />
             </S.Button>
           </S.Header>
@@ -93,69 +105,73 @@ const ModalCreateUrl = ({
                 <span>Mais opções</span>
               </summary>
 
-              <label htmlFor="select-option">Agendar por: </label>
-              <S.WrapperMoreOptions>
-                <div>
-                  <S.InputRadio>
-                    <input
-                      type="radio"
-                      name="more-option"
-                      id="date"
-                      value="date"
-                      onChange={() => setShowDate('date')}
-                    />
-                    <label htmlFor="date">Data</label>
-                  </S.InputRadio>
+              <S.Options isShowOptions={!!translateIcon}>
+                <label htmlFor="select-option">Agendar por: </label>
+                <S.WrapperMoreOptions>
+                  <div>
+                    <S.InputRadio>
+                      <input
+                        type="radio"
+                        name="more-option"
+                        id="date"
+                        value="date"
+                        checked={showDate === 'date'}
+                        onChange={() => setShowDate('date')}
+                      />
+                      <label htmlFor="date">Data</label>
+                    </S.InputRadio>
 
-                  <S.InputRadio>
-                    <input
-                      type="radio"
-                      name="more-option"
-                      id="hour"
-                      value="hour"
-                      onChange={() => setShowDate('hour')}
-                    />
-                    <label htmlFor="hour">Hora</label>
-                  </S.InputRadio>
-                </div>
-                {showDate === 'date' && (
-                  <S.WrapperDate>
-                    <DateRangePicker
-                      startDatePlaceholderText="Inicia em"
-                      endDatePlaceholderText="Termina em"
-                      startDate={date.startDate}
-                      startDateId="startDateUniqId"
-                      endDate={date.endDate}
-                      endDateId="endDateUniqId"
-                      onDatesChange={({ startDate, endDate }) =>
-                        setDate({ startDate, endDate })
-                      }
-                      enableOutsideDays={true}
-                      small={true}
-                      openDirection="up"
-                      focusedInput={focusedInput}
-                      onFocusChange={(focusedInput) =>
-                        setFocusedInput(focusedInput)
-                      }
-                    />
-                  </S.WrapperDate>
-                )}
-                {showDate === 'hour' && (
-                  <S.WrapperHour>
-                    <span>Expira em: </span>
+                    <S.InputRadio>
+                      <input
+                        type="radio"
+                        name="more-option"
+                        id="hour"
+                        value="hour"
+                        checked={showDate === 'hour'}
+                        onChange={() => setShowDate('hour')}
+                      />
+                      <label htmlFor="hour">Hora</label>
+                    </S.InputRadio>
+                  </div>
+                  {showDate === 'date' && (
+                    <S.WrapperDate>
+                      <DateRangePicker
+                        startDatePlaceholderText="Inicia em"
+                        endDatePlaceholderText="Termina em"
+                        startDate={date.startDate}
+                        startDateId="startDateUniqId"
+                        endDate={date.endDate}
+                        endDateId="endDateUniqId"
+                        onDatesChange={({ startDate, endDate }) =>
+                          setDate({ startDate, endDate })
+                        }
+                        enableOutsideDays={true}
+                        small={true}
+                        openDirection="up"
+                        focusedInput={focusedInput}
+                        onFocusChange={(focusedInput) =>
+                          setFocusedInput(focusedInput)
+                        }
+                      />
+                    </S.WrapperDate>
+                  )}
+                  {showDate === 'hour' && (
+                    <S.WrapperHour>
+                      <span>Expira em: </span>
 
-                    <Select
-                      name="hours"
-                      options={optionsHour}
-                      className="basic-select"
-                      classNamePrefix="select"
-                      styles={customStyles}
-                      defaultValue={optionsHour[0]}
-                      onChange={(event) => setHour(event.value)}
-                    />
-                  </S.WrapperHour>
-                )}
-              </S.WrapperMoreOptions>
+                      <Select
+                        name="hours"
+                        options={optionsHour}
+                        className="basic-select"
+                        classNamePrefix="select"
+                        styles={customStyles}
+                        defaultValue={optionsHour[0]}
+                        onChange={(event) => setHour(event.value)}
+                      />
+                    </S.WrapperHour>
+                  )}
+                </S.WrapperMoreOptions>
+              </S.Options>
             </S.MoreOptions>
 
             <Button fullWidth loading={stateButton}>

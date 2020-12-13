@@ -29,6 +29,7 @@ const Register = () => {
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
+    if (!formValues.name || !formValues.email || !formValues.password) return;
 
     setLoadingButton(true);
     if (loadingButton) return;

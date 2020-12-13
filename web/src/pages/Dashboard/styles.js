@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const SectionContent = styled.div`
-  max-width: 160rem;
+  max-width: 120rem;
   margin: 0 auto;
   padding: 0 2%;
 `;
@@ -72,8 +72,13 @@ export const InputSearch = styled.input`
   `}
 `;
 
+const WrapperLinksModifiers = {
+  selected: (theme) => css`
+    background: ${theme.colors.background.selectBg};
+  `,
+};
 export const WrapperLinks = styled.div`
-  ${({ theme }) => css`
+  ${({ theme, selected }) => css`
     padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
       ${theme.spacing.medium};
 
@@ -81,6 +86,8 @@ export const WrapperLinks = styled.div`
     &:hover {
       background: ${theme.colors.background.selectBg};
     }
+
+    ${!!selected && WrapperLinksModifiers.selected(theme)}
   `}
 `;
 export const ShortenedLink = styled.div`
@@ -184,7 +191,7 @@ export const RealLinkDetail = styled(RealLink)`
     }
 
     p {
-      margin-top: calc(${theme.spacing.xlarge} * 2);
+      margin-top: ${theme.spacing.xlarge};
       font-size: ${theme.font.size.medium};
       color: ${theme.colors.text.secondary};
       font-weight: ${theme.font.bold};
@@ -244,4 +251,41 @@ export const LoadingJumbo = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const QrCodeBox = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      width: 100%;
+      margin-top: ${theme.spacing.xlarge};
+      font-size: ${theme.font.size.medium};
+      color: ${theme.colors.text.secondary};
+      font-weight: ${theme.font.bold};
+      border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+      padding-bottom: ${theme.spacing.medium};
+    }
+    span {
+      width: 100%;
+      margin-top: ${theme.spacing.xsmall};
+      font-size: ${theme.font.size.xmall};
+      color: ${theme.colors.text.secondary};
+      font-family: 'Roboto', sans-serif;
+      font-weight: ${theme.font.normal};
+    }
+
+    svg {
+      margin-top: 2rem;
+
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  `}
 `;
