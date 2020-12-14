@@ -17,6 +17,8 @@ class RedirectUrlService {
         ) {
           throw Error('this url is out of date');
         }
+      } else if (isAfter(Date.now(), url.url_expires_date)) {
+        throw Error('this url is out of hour');
       }
     }
 
