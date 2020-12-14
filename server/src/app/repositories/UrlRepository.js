@@ -32,6 +32,7 @@ class UrlRepository {
         'slug',
         'start_expires_date',
         'end_expires_date',
+        'created_at',
       ])
       .insert(urlData);
 
