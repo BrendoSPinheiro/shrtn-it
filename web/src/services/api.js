@@ -39,13 +39,20 @@ export const deleteUrl = async (id, token) => {
   });
 };
 
-export const createUrl = async (token, { title, full_url }) => {
+export const createUrl = async (
+  token,
+  { title, full_url, scheduling_type, start_expires_date, end_expires_date }
+) => {
   const auth = `Bearer ${token}`;
 
   const contentData = {
     title,
     full_url,
+    scheduling_type,
+    start_expires_date,
+    end_expires_date,
   };
+
   const { data } = await api.post('/urls', contentData, {
     headers: { Authorization: auth },
   });

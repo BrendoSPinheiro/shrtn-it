@@ -109,11 +109,10 @@ const Dashboard = () => {
       const [data] = await createUrl(user.token, {
         title,
         full_url,
+        scheduling_type,
         start_expires_date: startDate._d,
         end_expires_date: endDate._d,
-        scheduling_type,
       });
-
       const newArray = urls;
 
       newArray.push(data);
