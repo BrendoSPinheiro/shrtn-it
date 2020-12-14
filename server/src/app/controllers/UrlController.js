@@ -1,3 +1,4 @@
+const { parseISO } = require('date-fns');
 const UrlDto = require('../dto/UrlDto');
 
 const ListUrlService = require('../services/url/ListUrlService');
@@ -37,7 +38,7 @@ class UrlController {
 
       res.redirect(url.full_url);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      console.log(error.message);
     }
   }
 
@@ -49,7 +50,10 @@ class UrlController {
         full_url,
         scheduling_type,
       } = req.body;
-      const { start_expires_date, end_expires_date } = req.body;
+      let { start_expires_date, end_expires_date } = req.body;
+
+      start_expires_date = parseISO(start_expires_date);
+      end_expires_date = parseISO(end_expires_date);
 
       const createUrl = new CreateUrlService();
 
