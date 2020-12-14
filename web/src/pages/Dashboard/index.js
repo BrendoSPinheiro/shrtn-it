@@ -10,6 +10,8 @@ import useUser from '../../utils/useUser';
 
 import { createUrl, detailsUrl } from '../../services/api';
 
+import formatDateHour from '../../utils/formatDateHour';
+
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import Button from '../../components/Button';
@@ -213,7 +215,7 @@ const Dashboard = () => {
                 <S.Date>
                   <span>Criado em:</span>
 
-                  <p>29/10/2020</p>
+                  <p>{detailUrl.created_at}</p>
                 </S.Date>
               </S.HeaderJumboDetails>
 
@@ -242,7 +244,42 @@ const Dashboard = () => {
                 </S.ShortenedLinkDetail>
                 <S.RealLinkDetail>
                   <h1>{detailUrl.short_url.replace('http://', '')}</h1>
-
+                  {detailUrl.scheduling_type === 'date' && (
+                    <>
+                      <p>Data de expiração:</p>
+                      <div>
+                        <p>
+                          Início:{' '}
+                          <span>
+                            {formatDateHour(
+                              detailUrl.start_expires_date,
+                              'dd/MM/yy'
+                            )}
+                          </span>
+                        </p>
+                        <p>
+                          Fim:{' '}
+                          <span>
+                            {formatDateHour(
+                              detailUrl.end_expires_date,
+                              'dd/MM/yy'
+                            )}
+                          </span>
+                        </p>
+                      </div>
+                    </>
+                  )}
+                  {detailUrl.scheduling_type === 'hour' && (
+                    <p>
+                      Horário de expiração:{' '}
+                      <span>
+                        {formatDateHour(
+                          detailUrl.start_expires_date,
+                          'dd/MM/yy'
+                        )}
+                      </span>
+                    </p>
+                  )}
                   <p>Estatísticas</p>
                 </S.RealLinkDetail>
                 <S.ClickStats>
