@@ -25,8 +25,6 @@ class UrlController {
 
     const url = await detailUrl.execute(id);
 
-    console.log(url);
-
     res.json(UrlDto.render(url));
   }
 
