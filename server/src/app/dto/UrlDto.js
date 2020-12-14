@@ -7,6 +7,7 @@ class UrlView {
       title: url.title,
       short_url: `http://localhost:3001/${url.slug}`,
       clicks: url.count_click,
+      scheduling_type: url.scheduling_type,
       created_at: format(url.created_at, 'dd-MM-yyyy'),
       start_expires_date: url.start_expires_date,
       end_expires_date: url.end_expires_date,
