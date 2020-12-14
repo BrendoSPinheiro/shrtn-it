@@ -53,6 +53,12 @@ const Dashboard = () => {
     clicks: 0,
   });
 
+  const [date, setDate] = useState({
+    startDate: null,
+    endDate: null,
+  });
+  const [scheduling_type, setScheduling_type] = useState('');
+
   const [loadingJumbo, setLoadingJumbo] = useState(false);
 
   const { user } = useUser();
@@ -95,10 +101,18 @@ const Dashboard = () => {
 
     const { title, full_url } = stateModal;
 
+    const { startDate, endDate } = date;
+
     setStateButtonModal(true);
 
     try {
-      const [data] = await createUrl(user.token, { title, full_url });
+      const [data] = await createUrl(user.token, {
+        title,
+        full_url,
+        start_expires_date: startDate._d,
+        end_expires_date: endDate._d,
+        scheduling_type,
+      });
 
       const newArray = urls;
 
@@ -132,7 +146,6 @@ const Dashboard = () => {
 
     setLoadingJumbo(false);
   };
-
   return (
     <S.Wrapper>
       <Header />
@@ -260,7 +273,6 @@ const Dashboard = () => {
           )}
         </S.Main>
       </S.SectionContent>
-
       <ModalCreateUrl
         onClick={() => setHideModal(!hideModal)}
         hideModal={hideModal}
@@ -268,6 +280,8 @@ const Dashboard = () => {
         setState={setStateModal}
         handleFormModal={handleFormModalSubmit}
         stateButton={stateButtonModal}
+        stateDate={{ date, setDate }}
+        scheduling_typeState={{ scheduling_type, setScheduling_type }}
       />
     </S.Wrapper>
   );
