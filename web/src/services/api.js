@@ -41,17 +41,40 @@ export const deleteUrl = async (id, token) => {
 
 export const createUrl = async (
   token,
-  { title, full_url, scheduling_type, start_expires_date, end_expires_date }
-) => {
-  const auth = `Bearer ${token}`;
-
-  const contentData = {
+  {
     title,
     full_url,
     scheduling_type,
     start_expires_date,
     end_expires_date,
-  };
+    hour,
+  }
+) => {
+  const auth = `Bearer ${token}`;
+  console.log(start_expires_date);
+  let contentData;
+
+  if (scheduling_type === 'date') {
+    contentData = {
+      title,
+      full_url,
+      scheduling_type,
+      start_expires_date: start_expires_date._d,
+      end_expires_date: end_expires_date._d,
+    };
+  } else if (scheduling_type === 'hour') {
+    contentData = {
+      title,
+      full_url,
+      scheduling_type,
+      hour,
+    };
+  } else {
+    contentData = {
+      title,
+      full_url,
+    };
+  }
 
   const { data } = await api.post('/urls', contentData, {
     headers: { Authorization: auth },

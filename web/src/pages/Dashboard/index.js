@@ -57,6 +57,8 @@ const Dashboard = () => {
     startDate: null,
     endDate: null,
   });
+  const [hour, setHour] = useState(1);
+
   const [scheduling_type, setScheduling_type] = useState('');
 
   const [loadingJumbo, setLoadingJumbo] = useState(false);
@@ -110,9 +112,11 @@ const Dashboard = () => {
         title,
         full_url,
         scheduling_type,
-        start_expires_date: startDate._d,
-        end_expires_date: endDate._d,
+        hour,
+        start_expires_date: startDate,
+        end_expires_date: endDate,
       });
+
       const newArray = urls;
 
       newArray.push(data);
@@ -281,6 +285,7 @@ const Dashboard = () => {
         stateButton={stateButtonModal}
         stateDate={{ date, setDate }}
         scheduling_typeState={{ scheduling_type, setScheduling_type }}
+        stateHour={{ hour, setHour }}
       />
     </S.Wrapper>
   );
