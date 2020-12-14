@@ -128,6 +128,17 @@ const Dashboard = () => {
 
       setHideModal(true);
       setStateButtonModal(false);
+
+      setStateModal({
+        title: '',
+        full_url: '',
+      });
+      setScheduling_type('');
+      setDate({
+        startDate: null,
+        endDate: null,
+      });
+      setHour(1);
     } catch (error) {
       toast.error('Erro ao criar a url');
       setStateButtonModal(false);
