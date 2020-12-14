@@ -52,8 +52,10 @@ class UrlController {
       } = req.body;
       let { start_expires_date, end_expires_date } = req.body;
 
-      start_expires_date = parseISO(start_expires_date);
-      end_expires_date = parseISO(end_expires_date);
+      if (scheduling_type) {
+        start_expires_date = parseISO(start_expires_date);
+        end_expires_date = parseISO(end_expires_date);
+      }
 
       const createUrl = new CreateUrlService();
 

@@ -17,17 +17,11 @@ class CreateUrlService {
     const schema = Yup.object().shape({
       title: Yup.string(),
       full_url: Yup.string().url().required(),
-      scheduling_type: Yup.string(),
-      start_expires_date: Yup.date(),
-      end_expires_date: Yup.date(),
     });
 
     if (!await schema.isValid({
       title,
       full_url,
-      scheduling_type,
-      start_expires_date,
-      end_expires_date,
     })) {
       throw Error('Validation fails');
     }
