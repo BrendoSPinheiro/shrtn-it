@@ -1,5 +1,5 @@
 const Yup = require('yup');
-const { isBefore } = require('date-fns');
+const { isBefore, addHours } = require('date-fns');
 
 const UrlRepository = require('../../repositories/UrlRepository');
 const SlugGenerator = require('../../utils/SlugGenerator');
@@ -13,6 +13,7 @@ class CreateUrlService {
     scheduling_type,
     start_expires_date,
     end_expires_date,
+    hour,
   }) {
     const schema = Yup.object().shape({
       title: Yup.string(),
@@ -65,6 +66,8 @@ class CreateUrlService {
           title,
           full_url,
           slug: await SlugGenerator(),
+          scheduling_type,
+          end_expires_date: addHours(Date.now(), hour),
           user_id: userId,
         };
       }

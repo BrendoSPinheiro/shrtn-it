@@ -274,8 +274,8 @@ const Dashboard = () => {
                       Horário de expiração:{' '}
                       <span>
                         {formatDateHour(
-                          detailUrl.start_expires_date,
-                          'dd/MM/yy'
+                          detailUrl.end_expires_date,
+                          "dd/MM/yy 'às' HH:mm:ss"
                         )}
                       </span>
                     </p>

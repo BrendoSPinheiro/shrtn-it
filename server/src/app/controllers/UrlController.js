@@ -25,6 +25,8 @@ class UrlController {
 
     const url = await detailUrl.execute(id);
 
+    console.log(url);
+
     res.json(UrlDto.render(url));
   }
 
@@ -49,6 +51,7 @@ class UrlController {
         title,
         full_url,
         scheduling_type,
+        hour,
       } = req.body;
       let { start_expires_date, end_expires_date } = req.body;
 
@@ -66,6 +69,7 @@ class UrlController {
         scheduling_type,
         start_expires_date,
         end_expires_date,
+        hour,
       });
 
       return res.json(UrlDto.renderMany(url));
