@@ -195,6 +195,20 @@ export const RealLinkDetail = styled(RealLink)`
       font-size: ${theme.font.size.medium};
       color: ${theme.colors.text.secondary};
       font-weight: ${theme.font.bold};
+      span {
+        color: ${theme.colors.text.primary};
+      }
+    }
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      p {
+        margin-top: 1rem;
+        font-weight: ${theme.font.normal};
+        color: ${theme.colors.text.gray};
+      }
     }
     border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
 

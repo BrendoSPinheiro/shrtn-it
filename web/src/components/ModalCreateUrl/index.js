@@ -23,13 +23,14 @@ const ModalCreateUrl = ({
   handleFormModal,
   stateButton,
   stateDate,
+  stateHour,
   scheduling_typeState,
 }) => {
   const [translateIcon, setTranslateIcon] = useState(false);
 
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const [, setHour] = useState(1);
+  // const [hour, setHour] = useState(1);
   const { theme } = useTheme();
 
   const customStyles = {
@@ -66,7 +67,7 @@ const ModalCreateUrl = ({
       startDate: null,
       endDate: null,
     });
-    setHour(1);
+    stateHour.setHour(1);
   };
 
   return (
@@ -170,7 +171,7 @@ const ModalCreateUrl = ({
                         classNamePrefix="select"
                         styles={customStyles}
                         defaultValue={optionsHour[0]}
-                        onChange={(event) => setHour(event.value)}
+                        onChange={(event) => stateHour.setHour(event.value)}
                       />
                     </S.WrapperHour>
                   )}

@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
+    "date-fns": "^2.16.1",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "qrcode.react": "^1.0.0",
