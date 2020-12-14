@@ -38,7 +38,7 @@ class UrlController {
 
       res.redirect(url.full_url);
     } catch (error) {
-      res.redirect('http://localhost:3000/notfound');
+      res.redirect('http://localhost:3000/urlnotfound');
     }
   }
 
