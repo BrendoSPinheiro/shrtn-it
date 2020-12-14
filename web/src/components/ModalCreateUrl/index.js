@@ -22,19 +22,14 @@ const ModalCreateUrl = ({
   setState,
   handleFormModal,
   stateButton,
+  stateDate,
+  scheduling_typeState,
 }) => {
   const [translateIcon, setTranslateIcon] = useState(false);
-  const [showDate, setShowDate] = useState('');
-
-  const [date, setDate] = useState({
-    startDate: null,
-    endDate: null,
-  });
 
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const [/*hour,*/ setHour] = useState(1);
-
+  const [, setHour] = useState(1);
   const { theme } = useTheme();
 
   const customStyles = {
@@ -50,7 +45,7 @@ const ModalCreateUrl = ({
     }),
     control: () => ({
       borderRadius: theme.border.buttonRadius,
-      width: '100px',
+      width: '10.6rem',
 
       display: 'flex',
       border: `0.1rem solid ${theme.colors.stroke.primary}`,
@@ -64,8 +59,14 @@ const ModalCreateUrl = ({
   const hideOnModal = () => {
     onClick();
 
-    setShowDate('');
+    //Reset States
+    scheduling_typeState.setScheduling_type('');
     setTranslateIcon(false);
+    stateDate.setDate({
+      startDate: null,
+      endDate: null,
+    });
+    setHour(1);
   };
 
   return (
@@ -110,8 +111,12 @@ const ModalCreateUrl = ({
                         name="more-option"
                         id="date"
                         value="date"
-                        checked={showDate === 'date'}
-                        onChange={() => setShowDate('date')}
+                        checked={
+                          scheduling_typeState.scheduling_type === 'date'
+                        }
+                        onChange={() =>
+                          scheduling_typeState.setScheduling_type('date')
+                        }
                       />
                       <label htmlFor="date">Data</label>
                     </S.InputRadio>
@@ -122,23 +127,27 @@ const ModalCreateUrl = ({
                         name="more-option"
                         id="hour"
                         value="hour"
-                        checked={showDate === 'hour'}
-                        onChange={() => setShowDate('hour')}
+                        checked={
+                          scheduling_typeState.scheduling_type === 'hour'
+                        }
+                        onChange={() =>
+                          scheduling_typeState.setScheduling_type('hour')
+                        }
                       />
                       <label htmlFor="hour">Hora</label>
                     </S.InputRadio>
                   </div>
-                  {showDate === 'date' && (
+                  {scheduling_typeState.scheduling_type === 'date' && (
                     <S.WrapperDate>
                       <DateRangePicker
                         startDatePlaceholderText="Inicia em"
                         endDatePlaceholderText="Termina em"
-                        startDate={date.startDate}
+                        startDate={stateDate.date.startDate}
                         startDateId="startDateUniqId"
-                        endDate={date.endDate}
+                        endDate={stateDate.date.endDate}
                         endDateId="endDateUniqId"
                         onDatesChange={({ startDate, endDate }) =>
-                          setDate({ startDate, endDate })
+                          stateDate.setDate({ startDate, endDate })
                         }
                         enableOutsideDays={true}
                         small={true}
@@ -150,7 +159,7 @@ const ModalCreateUrl = ({
                       />
                     </S.WrapperDate>
                   )}
-                  {showDate === 'hour' && (
+                  {scheduling_typeState.scheduling_type === 'hour' && (
                     <S.WrapperHour>
                       <span>Expira em: </span>
 
