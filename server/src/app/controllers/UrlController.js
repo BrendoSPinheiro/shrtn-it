@@ -49,7 +49,8 @@ class UrlController {
         title,
         full_url,
         scheduling_type,
-        hour,
+        start_hour,
+        end_hour,
       } = req.body;
       let { start_expires_date, end_expires_date } = req.body;
 
@@ -67,7 +68,8 @@ class UrlController {
         scheduling_type,
         start_expires_date,
         end_expires_date,
-        hour,
+        start_hour,
+        end_hour,
       });
 
       return res.json(UrlDto.renderMany(url));

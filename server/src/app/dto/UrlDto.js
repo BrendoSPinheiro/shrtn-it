@@ -11,6 +11,8 @@ class UrlView {
       created_at: format(url.created_at, 'dd/MM/yyyy'),
       start_expires_date: url.start_expires_date,
       end_expires_date: url.end_expires_date,
+      start_expires_hour: url.start_expires_hour,
+      end_expires_hour: url.end_expires_hour,
     };
   }
 
