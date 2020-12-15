@@ -167,7 +167,9 @@ const ModalCreateUrl = ({
 
                         <Select
                           name="hours"
-                          options={optionsHour}
+                          options={(() => {
+                            return optionsHour.filter((hour) => hour.id !== 0);
+                          })()}
                           className="basic-select"
                           classNamePrefix="select"
                           styles={customStyles}
@@ -183,11 +185,15 @@ const ModalCreateUrl = ({
 
                         <Select
                           name="hours"
-                          options={optionsHour}
+                          options={(() => {
+                            return optionsHour.filter(
+                              (hour) => hour.id > stateHour.hour.start_hour
+                            );
+                          })()}
                           className="basic-select"
                           classNamePrefix="select"
                           styles={customStyles}
-                          defaultValue={optionsHour[0]}
+                          defaultValue={optionsHour[1]}
                           onChange={(event) =>
                             stateHour.setHour({
                               ...stateHour.hour,
