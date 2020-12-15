@@ -51,7 +51,6 @@ export const createUrl = async (
   }
 ) => {
   const auth = `Bearer ${token}`;
-  console.log(start_expires_date);
   let contentData;
 
   if (scheduling_type === 'date') {
@@ -67,8 +66,10 @@ export const createUrl = async (
       title,
       full_url,
       scheduling_type,
-      hour,
+      start_hour: hour.start_hour,
+      end_hour: hour.end_hour,
     };
+    console.log(contentData);
   } else {
     contentData = {
       title,

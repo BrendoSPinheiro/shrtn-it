@@ -59,7 +59,10 @@ const Dashboard = () => {
     startDate: null,
     endDate: null,
   });
-  const [hour, setHour] = useState(1);
+  const [hour, setHour] = useState({
+    start_hour: '',
+    end_hour: '',
+  });
 
   const [scheduling_type, setScheduling_type] = useState('');
 
@@ -114,9 +117,9 @@ const Dashboard = () => {
         title,
         full_url,
         scheduling_type,
-        hour,
         start_expires_date: startDate,
         end_expires_date: endDate,
+        hour,
       });
 
       const newArray = urls;
