@@ -152,10 +152,12 @@ export const WrapperHour = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     span {
       color: ${theme.colors.text.secondary};
       font-size: ${theme.font.size.small};
+      margin-top: ${theme.spacing.small};
       margin-right: ${theme.spacing.xsmall};
     }
   `}

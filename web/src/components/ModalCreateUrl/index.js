@@ -162,17 +162,46 @@ const ModalCreateUrl = ({
                   )}
                   {scheduling_typeState.scheduling_type === 'hour' && (
                     <S.WrapperHour>
-                      <span>Expira em: </span>
+                      <>
+                        <span>Inicia em: </span>
 
-                      <Select
-                        name="hours"
-                        options={optionsHour}
-                        className="basic-select"
-                        classNamePrefix="select"
-                        styles={customStyles}
-                        defaultValue={optionsHour[0]}
-                        onChange={(event) => stateHour.setHour(event.value)}
-                      />
+                        <Select
+                          name="hours"
+                          options={(() => {
+                            return optionsHour.filter((hour) => hour.id !== 0);
+                          })()}
+                          className="basic-select"
+                          classNamePrefix="select"
+                          styles={customStyles}
+                          defaultValue={optionsHour[0]}
+                          onChange={(event) =>
+                            stateHour.setHour({
+                              ...stateHour.hour,
+                              start_hour: event.value,
+                            })
+                          }
+                        />
+                        <span>Expira em: </span>
+
+                        <Select
+                          name="hours"
+                          options={(() => {
+                            return optionsHour.filter(
+                              (hour) => hour.id > stateHour.hour.start_hour
+                            );
+                          })()}
+                          className="basic-select"
+                          classNamePrefix="select"
+                          styles={customStyles}
+                          defaultValue={optionsHour[1]}
+                          onChange={(event) =>
+                            stateHour.setHour({
+                              ...stateHour.hour,
+                              end_hour: event.value,
+                            })
+                          }
+                        />
+                      </>
                     </S.WrapperHour>
                   )}
                 </S.WrapperMoreOptions>

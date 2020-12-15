@@ -59,7 +59,10 @@ const Dashboard = () => {
     startDate: null,
     endDate: null,
   });
-  const [hour, setHour] = useState(1);
+  const [hour, setHour] = useState({
+    start_hour: '',
+    end_hour: '',
+  });
 
   const [scheduling_type, setScheduling_type] = useState('');
 
@@ -114,9 +117,9 @@ const Dashboard = () => {
         title,
         full_url,
         scheduling_type,
-        hour,
         start_expires_date: startDate,
         end_expires_date: endDate,
+        hour,
       });
 
       const newArray = urls;
@@ -281,15 +284,26 @@ const Dashboard = () => {
                     </>
                   )}
                   {detailUrl.scheduling_type === 'hour' && (
-                    <p>
-                      Horário de expiração:{' '}
-                      <span>
-                        {formatDateHour(
-                          detailUrl.end_expires_date,
-                          "dd/MM/yy 'às' HH:mm:ss"
-                        )}
-                      </span>
-                    </p>
+                    <>
+                      <p>
+                        Horário de início:{' '}
+                        <span>
+                          {formatDateHour(
+                            detailUrl.start_expires_hour,
+                            "dd/MM/yy 'às' HH:mm:ss"
+                          )}
+                        </span>
+                      </p>
+                      <p>
+                        Horário de expiração:{' '}
+                        <span>
+                          {formatDateHour(
+                            detailUrl.end_expires_hour,
+                            "dd/MM/yy 'às' HH:mm:ss"
+                          )}
+                        </span>
+                      </p>
+                    </>
                   )}
                   <p>Estatísticas</p>
                 </S.RealLinkDetail>
