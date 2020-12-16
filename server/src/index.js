@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 const server = express();
 
 server.use(cors({
-  origin: 'https://shrtn-it.vercel.app/',
+  origin: 'https://shrtn-it.vercel.app',
 }));
 server.use(express.json());
 server.use(routes);
