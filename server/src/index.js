@@ -1,9 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const routes = require('./routes');
-require('dotenv/config');
-
-const PORT = process.env.PORT || 3001;
 
 const server = express();
 
@@ -11,6 +9,6 @@ server.use(cors());
 server.use(express.json());
 server.use(routes);
 
-server.listen(PORT, () => {
+server.listen(3001, () => {
   console.log('🔥 Server started at http://localhost:3001');
 });
