@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  ${({ theme }) => css`
+  ${({ theme, loadingJumbo }) => css`
+    position: relative;
     width: 100%;
     max-width: 55rem;
 
     height: 59rem;
 
-    overflow-y: auto;
+    overflow-y: ${loadingJumbo ? 'hidden' : 'auto'};
 
     background: ${theme.colors.background.jumboBg};
     border: 0.1rem solid ${theme.colors.stroke.secondary};
@@ -39,4 +40,46 @@ export const Wrapper = styled.div`
       }
     }
   `}
+`;
+
+export const Loading = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: ${theme.colors.background.secondBg};
+
+    opacity: 0.5;
+  `}
+`;
+export const Spinner = styled.div`
+  border: 0.6rem solid #9085eb;
+  border-left: 0.6rem solid #eeedfc;
+  border-bottom: 0.6rem solid #eeedfc;
+
+  border-radius: 50%;
+
+  margin: auto;
+
+  width: 6rem;
+  height: 6rem;
+
+  animation: spinner 0.3s linear infinite;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;

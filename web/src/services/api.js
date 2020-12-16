@@ -34,9 +34,13 @@ export const listUrls = async (token) => {
 
 export const deleteUrl = async (id, token) => {
   const auth = `Bearer ${token}`;
-  await api.delete(`/urls/${id}`, {
-    headers: { Authorization: auth },
-  });
+  try {
+    await api.delete(`/urls/${id}`, {
+      headers: { Authorization: auth },
+    });
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 export const createUrl = async (
@@ -76,11 +80,9 @@ export const createUrl = async (
       full_url,
     };
   }
-
   const { data } = await api.post('/urls', contentData, {
     headers: { Authorization: auth },
   });
-
   return data;
 };
 
