@@ -9,6 +9,8 @@ class RedirectUrlService {
       throw Error('url not found');
     }
 
+    console.log(url);
+
     if (url.scheduling_type) {
       if (url.scheduling_type === 'date') {
         if (
