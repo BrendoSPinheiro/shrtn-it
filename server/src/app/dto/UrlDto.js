@@ -5,7 +5,7 @@ class UrlView {
     return {
       id: url.id,
       title: url.title,
-      short_url: `https://shrtn-it.herokuapp.com/${url.slug}`,
+      short_url: `http://localhost:3001/${url.slug}`,
       clicks: url.count_click,
       scheduling_type: url.scheduling_type,
       created_at: format(url.created_at, 'dd/MM/yyyy'),

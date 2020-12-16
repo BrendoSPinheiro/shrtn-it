@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://shrtn-it.herokuapp.com/',
+  baseURL: 'http://localhost:3001',
 });
 
 export const createUser = async (name, email, password) => {
