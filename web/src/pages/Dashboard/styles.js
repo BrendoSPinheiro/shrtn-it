@@ -143,6 +143,19 @@ export const ShortenedLink = styled.div`
     }
   `}
 `;
+
+export const NOrFoundUrl = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.text.primary};
+    font-size: ${theme.font.size.large};
+
+    text-align: center;
+
+    margin-top: 6rem;
+
+    transform: rotate(90deg);
+  `}
+`;
 export const RealLink = styled(ShortenedLink)`
   ${({ theme }) => css`
     margin-top: ${theme.spacing.xsmall};

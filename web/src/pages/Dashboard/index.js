@@ -69,8 +69,9 @@ const Dashboard = () => {
   const [loadingJumbo, setLoadingJumbo] = useState(false);
 
   const [loadingDeleteUrl, setLoadingDeleteUrl] = useState(false);
-  const { user } = useUser();
 
+  const [searchUrl, setSearchUrl] = useState('');
+  const { user } = useUser();
   useEffect(() => {
     (async () => {
       const data = await listUrls(user.token);
@@ -85,10 +86,10 @@ const Dashboard = () => {
       const newArray = urls.filter((url) => id !== url.id);
       await deleteUrl(id, user.token);
       setLoadingJumbo(false);
-      setUrls(newArray);
 
       setTimeout(() => {
         setLoadingDeleteUrl(false);
+        setUrls(newArray);
         if (detail) {
           setDetailUrl({
             id: '',
@@ -155,8 +156,6 @@ const Dashboard = () => {
   };
 
   const handleShowDetailsUrl = async (id) => {
-    if (id === detailUrl.id) return setLoadingJumbo(false);
-
     setLoadingJumbo(true);
 
     setDetailUrl({
@@ -171,6 +170,11 @@ const Dashboard = () => {
 
     setLoadingJumbo(false);
   };
+
+  const filteredUrls = urls.filter((url) => {
+    return url.title.toLowerCase().includes(searchUrl.toLowerCase());
+  });
+
   return (
     <S.Wrapper>
       <Header />
@@ -190,36 +194,44 @@ const Dashboard = () => {
             <S.HeaderJumbo>
               <h1>Seus Links</h1>
               <S.Search>
-                <S.InputSearch type="text" placeholder="Pesquisar..." />
+                <S.InputSearch
+                  type="text"
+                  placeholder="Pesquisar..."
+                  onChange={(event) => setSearchUrl(event.target.value)}
+                />
                 <Button size="small" icon={<SearchIcon size={24} />} />
               </S.Search>
             </S.HeaderJumbo>
 
-            {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks key={id} selected={detailUrl.id === id}>
-                <S.ShortenedLink onClick={() => handleShowDetailsUrl(id)}>
-                  <h1>{title}</h1>
+            {filteredUrls.length === 0 ? (
+              <S.NOrFoundUrl>{':('}</S.NOrFoundUrl>
+            ) : (
+              filteredUrls.map(({ id, title, short_url }) => (
+                <S.WrapperLinks key={id} selected={detailUrl.id === id}>
+                  <S.ShortenedLink onClick={() => handleShowDetailsUrl(id)}>
+                    <h1>{title}</h1>
 
-                  <S.RealLink>
-                    <h1>{short_url.replace('http://', '')}</h1>
-                  </S.RealLink>
-                </S.ShortenedLink>
+                    <S.RealLink>
+                      <h1>{short_url.replace('http://', '')}</h1>
+                    </S.RealLink>
+                  </S.ShortenedLink>
 
-                <S.Icons>
-                  <button>
-                    <TrashIcon
-                      size={16}
-                      onClick={() => handleDeleteUrl(id, id === detailUrl.id)}
-                    />
-                  </button>
-                  <button>
-                    <a target="_blank" rel="noreferrer" href={short_url}>
-                      <ExternalLinkIcon size={16} />
-                    </a>
-                  </button>
-                </S.Icons>
-              </S.WrapperLinks>
-            ))}
+                  <S.Icons>
+                    <button>
+                      <TrashIcon
+                        size={16}
+                        onClick={() => handleDeleteUrl(id, id === detailUrl.id)}
+                      />
+                    </button>
+                    <button>
+                      <a target="_blank" rel="noreferrer" href={short_url}>
+                        <ExternalLinkIcon size={16} />
+                      </a>
+                    </button>
+                  </S.Icons>
+                </S.WrapperLinks>
+              ))
+            )}
           </Jumbotron>
 
           {detailUrl.id !== '' && (
