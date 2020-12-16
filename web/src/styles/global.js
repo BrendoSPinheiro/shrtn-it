@@ -19,6 +19,8 @@ const GlobalStyles = createGlobalStyle`
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       font-size: ${theme.font.size.small};
+      height: 100vh;
+      background-color: ${theme.colors.background.secondBg};
     `}
   }
 

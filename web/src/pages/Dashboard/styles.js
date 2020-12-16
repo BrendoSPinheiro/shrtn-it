@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     background-color: ${theme.colors.background.secondBg};
 
     @media (max-width: 1050px) {
-      height: auto;
+      height: 100%;
     }
   `}
 `;
