@@ -168,7 +168,7 @@ const ModalCreateUrl = ({
                         <Select
                           name="hours"
                           options={(() => {
-                            return optionsHour.filter((hour) => hour.id !== 0);
+                            return optionsHour.filter((hour) => hour.id !== 24);
                           })()}
                           className="basic-select"
                           classNamePrefix="select"
