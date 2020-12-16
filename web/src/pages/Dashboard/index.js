@@ -68,6 +68,7 @@ const Dashboard = () => {
 
   const [loadingJumbo, setLoadingJumbo] = useState(false);
 
+  const [loadingDeleteUrl, setLoadingDeleteUrl] = useState(false);
   const { user } = useUser();
 
   useEffect(() => {
@@ -79,24 +80,29 @@ const Dashboard = () => {
   }, [user, setUrls]);
 
   const handleDeleteUrl = async (id, detail = false) => {
-    const newArray = urls.filter((url) => id !== url.id);
-    setUrls(newArray);
     try {
-      if (detail) {
-        setDetailUrl({
-          id: '',
-          title: '',
-          short_url: '',
-          clicks: 0,
-        });
-      }
+      setLoadingDeleteUrl(true);
+      const newArray = urls.filter((url) => id !== url.id);
       await deleteUrl(id, user.token);
       setLoadingJumbo(false);
+      setUrls(newArray);
 
-      toast.dark('Url deletada com sucesso!', {
-        autoClose: 2000,
-      });
+      setTimeout(() => {
+        setLoadingDeleteUrl(false);
+        if (detail) {
+          setDetailUrl({
+            id: '',
+            title: '',
+            short_url: '',
+            clicks: 0,
+          });
+        }
+        toast.dark('Url deletada com sucesso!', {
+          autoClose: 2000,
+        });
+      }, 1000);
     } catch (error) {
+      setLoadingDeleteUrl(false);
       toast.error('Erro ao deletar a url', {
         autoClose: 2000,
       });
@@ -180,7 +186,7 @@ const Dashboard = () => {
           />
         </S.Header>
         <S.Main>
-          <Jumbotron>
+          <Jumbotron loading={loadingDeleteUrl}>
             <S.HeaderJumbo>
               <h1>Seus Links</h1>
               <S.Search>
@@ -190,33 +196,28 @@ const Dashboard = () => {
             </S.HeaderJumbo>
 
             {urls.map(({ id, title, short_url }) => (
-              <S.WrapperLinks
-                key={id}
-                onClick={() => handleShowDetailsUrl(id)}
-                selected={detailUrl.id === id}
-              >
-                <div>
-                  <S.ShortenedLink>
-                    <h1>{title}</h1>
-
-                    <button>
-                      <TrashIcon
-                        size={16}
-                        onClick={() => handleDeleteUrl(id, id === detailUrl.id)}
-                      />
-                    </button>
-                  </S.ShortenedLink>
+              <S.WrapperLinks key={id} selected={detailUrl.id === id}>
+                <S.ShortenedLink onClick={() => handleShowDetailsUrl(id)}>
+                  <h1>{title}</h1>
 
                   <S.RealLink>
                     <h1>{short_url.replace('http://', '')}</h1>
-
-                    <button>
-                      <a target="_blank" rel="noreferrer" href={short_url}>
-                        <ExternalLinkIcon size={16} />
-                      </a>
-                    </button>
                   </S.RealLink>
-                </div>
+                </S.ShortenedLink>
+
+                <S.Icons>
+                  <button>
+                    <TrashIcon
+                      size={16}
+                      onClick={() => handleDeleteUrl(id, id === detailUrl.id)}
+                    />
+                  </button>
+                  <button>
+                    <a target="_blank" rel="noreferrer" href={short_url}>
+                      <ExternalLinkIcon size={16} />
+                    </a>
+                  </button>
+                </S.Icons>
               </S.WrapperLinks>
             ))}
           </Jumbotron>

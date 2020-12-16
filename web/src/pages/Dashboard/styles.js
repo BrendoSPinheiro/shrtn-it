@@ -79,10 +79,51 @@ const WrapperLinksModifiers = {
 };
 export const WrapperLinks = styled.div`
   ${({ theme, selected }) => css`
-    padding: ${theme.spacing.medium} ${theme.spacing.medium} 0
-      ${theme.spacing.medium};
+    padding:${theme.spacing.xsmall} ${theme.spacing.medium};
 
-    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
+
+    div {
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      cursor: pointer;
+
+
+      button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+
+        transition: transform 0.4s ease;
+        &:hover {
+          transform: scale(1.2);
+        }
+
+        svg{ transition: opacity 0.4s ease;
+          z-index: 9999;
+          &:hover {
+            opacity: 0.6;
+          }
+
+        }
+        svg {
+          color: ${theme.colors.icons.blue};
+
+        }
+        > svg {
+          color: ${theme.colors.icons.red};
+
+          }
+        }
+      }
+    }
+
     &:hover {
       background: ${theme.colors.background.selectBg};
     }
@@ -93,29 +134,12 @@ export const WrapperLinks = styled.div`
 export const ShortenedLink = styled.div`
   ${({ theme }) => css`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
     h1 {
       color: ${theme.colors.text.secondary};
       font-size: ${theme.font.size.small};
-    }
-    button {
-      background: transparent;
-      border: 0;
-      cursor: pointer;
-
-      transition: transform 0.4s ease;
-      &:hover {
-        transform: scale(1.2);
-      }
-      svg {
-        color: ${theme.colors.icons.red};
-        transition: opacity 0.4s ease;
-
-        &:hover {
-          opacity: 0.6;
-        }
-      }
     }
   `}
 `;
@@ -123,7 +147,6 @@ export const RealLink = styled(ShortenedLink)`
   ${({ theme }) => css`
     margin-top: ${theme.spacing.xsmall};
     padding-bottom: ${theme.spacing.medium};
-    border-bottom: 0.1rem solid ${theme.colors.stroke.secondary};
 
     h1 {
       color: ${theme.colors.text.primary};
@@ -164,17 +187,46 @@ export const WrapperLinkDetails = styled.div`
 `;
 export const Icons = styled.div`
   ${({ theme }) => css`
-    button:first-of-type svg {
-      color: ${theme.colors.icons.red};
-      margin-right: ${theme.spacing.medium};
-    }
-    button:last-of-type svg {
-      color: ${theme.colors.icons.blue};
-    }
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+
+        transition: transform 0.4s ease;
+        &:hover {
+          transform: scale(1.2);
+        }
+        svg{
+
+          transition: opacity 0.4s ease;
+          z-index: 9999;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+        svg {
+          color: ${theme.colors.icons.blue};
+        }
+        > svg {
+          color: ${theme.colors.icons.red};
+
+        }
   `}
 `;
 export const ShortenedLinkDetail = styled(ShortenedLink)`
   ${({ theme }) => css`
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
     h1 {
       font-size: ${theme.font.size.xlarge};
       color: ${theme.colors.text.primary};
