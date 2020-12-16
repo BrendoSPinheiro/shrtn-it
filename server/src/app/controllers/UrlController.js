@@ -38,7 +38,7 @@ class UrlController {
 
       res.redirect(url.full_url);
     } catch (error) {
-      res.redirect('http://localhost:3000/urlnotfound');
+      res.redirect('https://shrtn-it.vercel.app/urlnotfound');
     }
   }
 
