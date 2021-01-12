@@ -13,11 +13,15 @@
 - [Web](#web)
   - [Screenshots](#screenshots)
 - [API](#api)
-  - [Routes](#routes)
-  - [Requests](#requests)
   - [Installing](#installing)
   - [Configuring](#configuring)
     - [PostgreSQL](#postgresql)
+      - [Migrations](#migrations)
+    - [.env](#env)
+  - [Usage](#usage)
+    - [Bearer Token](#bearer-token)
+  - [Routes](#routes)
+  - [Requests](#requests)
 
 # About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
@@ -32,6 +36,83 @@ access the api source code here: [`WEB`](https://github.com/BrendoSPinheiro/shrt
 
 # API
 access the api source code here: [`API`](https://github.com/BrendoSPinheiro/shrtn-it/tree/main/server)
+
+## Installing
+First clone this repository:
+
+```shell
+$ git clone https://github.com/BrendoSPinheiro/shrtn-it.git
+```
+second go to the server folder
+
+```
+$ cd ./server
+```
+
+third install the dependencies:
+
+```shell
+$ yarn
+```
+Or:
+
+```shell
+$ npm install
+```
+> Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
+> 
+## Configuring
+
+this application uses the [PostgreSQL](https://www.postgresql.org/
+) database.
+
+### PostgreSQL
+Responsible for storing the data used by the application. For the fastest configuration it is recommended to use [docker](https://www.docker.com), you can create a postgresql container like this
+
+```
+$ docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+```
+
+* [knexfile.js](http://knexjs.org/#knexfile)
+> You can find the application's `knexfile.js` file in the root folder. It already comes with `test` and `development` connection configured, so you will update it only when deploying
+
+#### Migrations
+Remember to run the PostgreSQL database migrations:
+```
+$ npx knex migrate:latest
+```
+Or:
+```
+$ yarn knex migrate:latest
+```
+> See more information on [Knex Migrations](http://knexjs.org/#Migrations).
+
+### .env
+in this file, you will configure the jwt key.
+
+|key|description|default
+|---|---|---
+|JWTSECRET|A alphanumeric random string. Used to create signed tokens.| -
+
+## Usage
+To start up the app run:
+```
+$ yarn dev
+```
+Or:
+```
+$ npm run dev
+```
+
+### Bearer Token
+A few routes expect a Bearer Token in an `Authorization` header.
+> You can see these routes in the [Routes](#routes) section.
+
+```
+POST http://localhost:3001/urls Authorization: Bearer <token>
+```
+To achieve this token you just need authenticate through the `/sessions` route and it will return the `token` key with a valid Bearer Token.
+
 ## Routes
 |route|HTTP Method|params|description|auth method
 |:---|:---:|:---:|:---:|:---:
@@ -92,34 +173,3 @@ Request body:
   "password": "123456"
 }
 ```
-
-## Installing
-First clone this repository:
-
-```shell
-$ git clone https://github.com/BrendoSPinheiro/shrtn-it.git
-```
-second install the dependencies:
-
-```shell
-$ yarn
-```
-Or:
-
-```shell
-$ npm install
-```
-> Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
-> 
-## Configuring
-
-this application uses the [PostgreSQL](https://www.postgresql.org/
-) database.
-
-### PostgreSQL
-Responsible for storing the data used by the application. For the fastest configuration it is recommended to use [docker](https://www.docker.com), you can create a postgresql container like this
-
-```
-$ docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
-```
-
