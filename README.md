@@ -12,13 +12,15 @@
 - [About](#about)
 - [Web](#web)
   - [Screenshots](#screenshots)
-- [API](#api)
   - [Installing](#installing)
+  - [Usage](#usage)
+- [API](#api)
+  - [Installing](#installing-1)
   - [Configuring](#configuring)
     - [PostgreSQL](#postgresql)
       - [Migrations](#migrations)
     - [.env](#env)
-  - [Usage](#usage)
+  - [Usage](#usage-1)
     - [Bearer Token](#bearer-token)
     - [Routes](#routes)
     - [Requests](#requests)
@@ -34,6 +36,40 @@ access the api source code here: [`WEB`](https://github.com/BrendoSPinheiro/shrt
 <img src="./github/loginPage.png" width="49%"/> <img src="./github/newUrl.png" width="49%"/>
 <img src="./github/detailUrl.png" width="49%"/> <img src="./github/detailUrlSchedule.png" width="49%"/> 
 <img src="./github/detailUrlDark.png" width="49%"/> <img src="./github/errorPage.png" width="49%"/>
+
+## Installing
+First clone this repository:
+
+```shell
+$ git clone https://github.com/BrendoSPinheiro/shrtn-it.git
+```
+second go to the server folder
+
+```
+$ cd ./web
+```
+
+third install the dependencies:
+
+```shell
+$ yarn
+```
+Or:
+
+```shell
+$ npm install
+```
+> Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
+
+## Usage
+To start up the app run:
+```
+$ yarn dev
+```
+Or:
+```
+$ npm run dev
+```
 
 # API
 access the api source code here: [`API`](https://github.com/BrendoSPinheiro/shrtn-it/tree/main/server)
@@ -61,7 +97,7 @@ Or:
 $ npm install
 ```
 > Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
-> 
+
 ## Configuring
 
 this application uses the [PostgreSQL](https://www.postgresql.org/
