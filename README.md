@@ -10,7 +10,9 @@
 
 ## Table of Contents
 * [About](#about)
-* [Screenshots](#screenshots)
+* [Web](#web)
+  * [Screenshots](#screenshots)
+* [API](#API)
 * [Installing](#installing)
   * [Configuring](#configuring)
     * [.env](#env)
@@ -19,13 +21,85 @@
   * [Reactotron](#reactotron)
   * [Register & Login](#register--login)
   * [localStorage](#localstorage)
-* [Running the tests](#running-the-tests)
-  * [Coverage Report](#coverage-report)
 
-## About
+# About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
+
+# Web
+access the api source code here: [`WEB`](https://github.com/BrendoSPinheiro/shrtn-it/tree/main/web)
 
 ## Screenshots
 <img src="./github/loginPage.png" width="49%"/> <img src="./github/newUrl.png" width="49%"/>
 <img src="./github/detailUrl.png" width="49%"/> <img src="./github/detailUrlSchedule.png" width="49%"/> 
 <img src="./github/detailUrlDark.png" width="49%"/> <img src="./github/errorPage.png" width="49%"/>
+
+# API
+access the api source code here: [`API`](https://github.com/BrendoSPinheiro/shrtn-it/tree/main/server)
+## Routes
+|route|HTTP Method|params|description|auth method
+|:---|:---:|:---:|:---:|:---:
+|`/urls`|GET|:x:|Lists urls.|Bearer
+|`/urls/:id`|GET|`:id` of the URL.|Get url details.|Bearer
+|`/:slug`|GET|`:slug` of the short url.|Redirect short url.|:x:
+|`/urls`|POST|Body with new short url data.|Create a new short url.|Bearer
+|`/urls/:id`|DELETE|`:id` of the URL.|Delete short url.|Bearer
+|`/users`|POST|Body with new user data.|Create a new user.|:x:
+|`/session`|POST|Body with user data.|User authentication.|:x:
+> Routes with `Bearer` as auth method expect an `Authorization` header. See [Bearer Token](#bearer-token) section for more information.
+
+## Requests
+* `POST /urls`
+
+Request body:
+```json
+// to shorten an unscheduled URL
+{
+  "title": "Google",
+  "full_url": "https://google.com"
+}
+
+// to shorten a URL with scheduling by date
+{
+  "title": "Google",
+  "full_url": "https://google.com",
+  "scheduling_type": "date",
+  "start_expires_date": "2021-01-20",
+  "end_expires_date": "2021-01-22"
+}
+
+// to shorten a URL with scheduling by hour
+{
+  "title": "Google",
+  "full_url": "https://google.com",
+  "scheduling_type": "hour",
+  "start_hour": 0,
+  "end_hour": 2
+}
+```
+
+* `POST /users`
+
+```json
+{
+  "name": "Fulano",
+  "email": "fulano@mail.com",
+  "password": "123456"
+}
+```
+
+* `POST /session`
+
+```json
+{
+  "email": "fulano@mail.com",
+  "password": "123456"
+}
+```
+
+Easy peasy lemon squeezy:
+
+```shell
+$ git clone https://github.com/BrendoSPinheiro/happy-web
+```
+
+> Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
