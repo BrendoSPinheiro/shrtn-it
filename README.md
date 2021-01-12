@@ -16,6 +16,8 @@
   - [Routes](#routes)
   - [Requests](#requests)
   - [Installing](#installing)
+  - [Configuring](#configuring)
+    - [PostgreSQL](#postgresql)
 
 # About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
@@ -107,6 +109,17 @@ Or:
 ```shell
 $ npm install
 ```
-
-
 > Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
+> 
+## Configuring
+
+this application uses the [PostgreSQL](https://www.postgresql.org/
+) database.
+
+### PostgreSQL
+Responsible for storing the data used by the application. For the fastest configuration it is recommended to use [docker](https://www.docker.com), you can create a postgresql container like this
+
+```
+$ docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+```
+
