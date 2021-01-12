@@ -27,7 +27,7 @@
 - [Contributors](#contributors)
 
 # About
-This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
+This project is a URL shortener developed for my course completion project. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
 
 # Web
 access the api source code here: [`WEB`](https://github.com/BrendoSPinheiro/shrtn-it/tree/main/web)
