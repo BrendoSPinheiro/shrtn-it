@@ -64,11 +64,11 @@ $ npm install
 ## Usage
 To start up the app run:
 ```
-$ yarn dev
+$ yarn start
 ```
 Or:
 ```
-$ npm run dev
+$ npm start
 ```
 
 # API
