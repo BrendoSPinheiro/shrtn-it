@@ -1,6 +1,7 @@
 <div align="center">
-  ![logo shrtn-it](github/logoshrtnit.png)
+  <img src="./github/logoshrtnit.png"/>
 </div>
+
 [![styled-components](https://img.shields.io/badge/styled_components-5.2.1-db7b86?style=flat-square&logo=styled-components)](https://styled-components.com/)
 [![eslint](https://img.shields.io/badge/eslint-7.14.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
