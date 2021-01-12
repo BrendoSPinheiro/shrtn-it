@@ -26,9 +26,9 @@
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
 
 ## Screenshots
-<img src="./github/loginPage.png" width="45%"/>
-<img src="./github/newUrl.png" width="45%"/>
-<img src="./github/detailUrl.png" width="45%"/>
-<img src="./github/detailUrlSchedule.png" width="45%"/>
-<img src="./github/detailUrlDark.png" width="45%"/>
-<img src="./github/errorPage.png" width="45%"/>
+<img src="./github/loginPage.png" width="35%"/>
+<img src="./github/newUrl.png" width="35%"/>
+<img src="./github/detailUrl.png" width="35%"/>
+<img src="./github/detailUrlSchedule.png" width="35%"/>
+<img src="./github/detailUrlDark.png" width="35%"/>
+<img src="./github/errorPage.png" width="35%"/>
