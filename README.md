@@ -114,6 +114,7 @@ POST http://localhost:3001/urls Authorization: Bearer <token>
 To achieve this token you just need authenticate through the `/sessions` route and it will return the `token` key with a valid Bearer Token.
 
 ### Routes
+
 |route|HTTP Method|params|description|auth method
 |:---|:---:|:---:|:---:|:---:
 |`/urls`|GET|:x:|Lists urls.|Bearer
@@ -126,6 +127,7 @@ To achieve this token you just need authenticate through the `/sessions` route a
 > Routes with `Bearer` as auth method expect an `Authorization` header. See [Bearer Token](#bearer-token) section for more information.
 
 ### Requests
+
 * `POST /urls`
 
 Request body:
