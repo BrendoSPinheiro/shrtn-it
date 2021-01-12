@@ -7,3 +7,28 @@
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/BrendoSPinheiro/shrtn-it/blob/main/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
+
+## Table of Contents
+* [About](#about)
+* [Screenshots](#screenshots)
+* [Installing](#installing)
+  * [Configuring](#configuring)
+    * [.env](#env)
+    * [API](#api)
+* [Usage](#usage)
+  * [Reactotron](#reactotron)
+  * [Register & Login](#register--login)
+  * [localStorage](#localstorage)
+* [Running the tests](#running-the-tests)
+  * [Coverage Report](#coverage-report)
+
+## About
+This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
+
+## Screenshots
+<img src="./github/loginPage.png" width="49%"/>
+<img src="./github/newUrl.png" width="49%"/>
+<img src="./github/detailUrl.png" width="49%"/>
+<img src="./github/detailUrlSchedule.png" width="49%"/>
+<img src="./github/detailUrlDark.png" width="49%"/>
+<img src="./github/errorPage.png" width="49%"/>
