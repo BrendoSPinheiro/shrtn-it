@@ -22,6 +22,7 @@
     - [Bearer Token](#bearer-token)
     - [Routes](#routes)
     - [Requests](#requests)
+- [Contributors](#contributors)
 
 # About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
@@ -175,3 +176,23 @@ Request body:
   "password": "123456"
 }
 ```
+
+# Contributors
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/BrendoSPinheiro">
+        <img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/58182317?s=400&u=26c7aaa96fceb70e45c89833c2c0e3e300ffe05c&v=4" width="100px;" alt=""/><br />
+        <sub><b>Brendo Souza</b></sub><br />
+        <sub><b>Backend</b></sub>
+      </a><br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/Matheus0liveira">
+        <img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/58826355?s=400&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" width="100px;" alt=""/><br />
+        <sub><b>Matheus Oliveira</b></sub><br />
+        <sub><b>Front-End</b></sub>
+      </a><br />
+    </td>
+  </tr>
+</table>
