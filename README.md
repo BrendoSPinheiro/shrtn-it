@@ -9,18 +9,13 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
 
 ## Table of Contents
-* [About](#about)
-* [Web](#web)
-  * [Screenshots](#screenshots)
-* [API](#API)
-* [Installing](#installing)
-  * [Configuring](#configuring)
-    * [.env](#env)
-    * [API](#api)
-* [Usage](#usage)
-  * [Reactotron](#reactotron)
-  * [Register & Login](#register--login)
-  * [localStorage](#localstorage)
+- [About](#about)
+- [Web](#web)
+  - [Screenshots](#screenshots)
+- [API](#api)
+  - [Routes](#routes)
+  - [Requests](#requests)
+  - [Installing](#installing)
 
 # About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
@@ -96,10 +91,22 @@ Request body:
 }
 ```
 
-Easy peasy lemon squeezy:
+## Installing
+First clone this repository:
 
 ```shell
-$ git clone https://github.com/BrendoSPinheiro/happy-web
+$ git clone https://github.com/BrendoSPinheiro/shrtn-it.git
 ```
+second install the dependencies:
+
+```shell
+$ yarn
+```
+Or:
+
+```shell
+$ npm install
+```
+
 
 > Was installed and configured the [`eslint`](https://eslint.org/) to keep the code clean and patterned.
