@@ -227,13 +227,14 @@ Request body:
       <a href="https://github.com/Matheus0liveira">
         <img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/58826355?s=400&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" width="100px;" alt=""/><br />
         <sub><b>Matheus Oliveira</b></sub><br />
-        <sub><b>Front-End</b></sub>
+        <sub><b>Frontend</b></sub>
       </a><br />
     </td>
     <td align="center">
       <a href="https://github.com/EmmanoellPasquet">
         <img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/47647200?s=400&u=1898ac2472f59d07ff87fcf83e49e010122c48ba&v=4" width="100px;" alt=""/><br />
         <sub><b>Emmanoell Pasquet</b></sub><br />
+        <sub><b>Author of the article</b></sub>
       </a><br />
     </td>
   </tr>
