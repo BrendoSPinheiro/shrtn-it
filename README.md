@@ -20,8 +20,8 @@
     - [.env](#env)
   - [Usage](#usage)
     - [Bearer Token](#bearer-token)
-  - [Routes](#routes)
-  - [Requests](#requests)
+    - [Routes](#routes)
+    - [Requests](#requests)
 
 # About
 This project is a URL shortener developed for my TCC. Its main objective is to have more control over the expiration of urls and validations of broken or nonexistent urls
@@ -113,7 +113,7 @@ POST http://localhost:3001/urls Authorization: Bearer <token>
 ```
 To achieve this token you just need authenticate through the `/sessions` route and it will return the `token` key with a valid Bearer Token.
 
-## Routes
+### Routes
 |route|HTTP Method|params|description|auth method
 |:---|:---:|:---:|:---:|:---:
 |`/urls`|GET|:x:|Lists urls.|Bearer
@@ -125,7 +125,7 @@ To achieve this token you just need authenticate through the `/sessions` route a
 |`/session`|POST|Body with user data.|User authentication.|:x:
 > Routes with `Bearer` as auth method expect an `Authorization` header. See [Bearer Token](#bearer-token) section for more information.
 
-## Requests
+### Requests
 * `POST /urls`
 
 Request body:
