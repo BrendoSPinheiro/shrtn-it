@@ -230,5 +230,11 @@ Request body:
         <sub><b>Front-End</b></sub>
       </a><br />
     </td>
+    <td align="center">
+      <a href="https://github.com/EmmanoellPasquet">
+        <img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/47647200?s=400&u=1898ac2472f59d07ff87fcf83e49e010122c48ba&v=4" width="100px;" alt=""/><br />
+        <sub><b>Matheus Oliveira</b></sub><br />
+      </a><br />
+    </td>
   </tr>
 </table>
