@@ -43,7 +43,7 @@ First clone this repository:
 ```shell
 $ git clone https://github.com/BrendoSPinheiro/shrtn-it.git
 ```
-second go to the server folder
+second go to the web folder
 
 ```
 $ cd ./web
